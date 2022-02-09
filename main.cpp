@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <numeric>
+#include <string>
+#include <regex>
 
 using std::string;
 using std::cout;
@@ -19,12 +21,24 @@ struct data {
 
 data* input_data(int& arr_length);
 int* input_grades(int& arr_length);
+bool is_grade(string s);
 
-double average(int* arr, int arr_length) {
-    return accumulate(arr, arr + arr_length, 0.0) / arr_length;
+bool check_name(string s) {
+    std::regex reg("^[A-Z][a-z]*$");
+    if(std::regex_match(s, reg))
+        return true;
+    else
+        return false;
 }
 
-
+double average(int* arr, int arr_length) {
+    // cout << arr_length << endl;
+    if(arr_length > 0) {
+        return accumulate(arr, arr + arr_length, 0.0) / arr_length;
+    } else {
+        return 0;
+    }
+}
 
 void print(data* arr, int arr_length) {
     cout << endl;
@@ -44,35 +58,50 @@ int main() {
     int arr_length = 0;
     data* arr = input_data(arr_length);
     print(arr, arr_length);
-    // for(int i = 0; i < arr_length; i++) {
-    //     cout << endl << endl << arr[i].name << " " << arr[i].surname << " " << endl;
-    //     for(int j = 0; j < arr[i].grades_len; j++) {
-    //         cout << arr[i].grades[j] << " ";
-    //     }
-    //     cout << endl << arr[i].exam << endl;
-    // }
 }
 
 
- 
+bool is_grade(string s) {
+    std::regex reg("[0-9]");
+    if(std::regex_match(s, reg))
+        return true;
+    else
+        return false;
+}
 
 int* input_grades(int& arr_length) {
     int* arr = new int[arr_length];
-    cout << "Iveskite namu darbu rezultatus atskiriant tarpu: ";
-    do {
-        int input;
+    cout << "Iveskite namu darbu rezultatus, norint baigti, iveskite 0: " << endl;
+    string input = "";
+    int number = 10;
+    while(true) {
+        cout << arr_length + 1 << " pazymys: ";
         if(cin >> input) {
-            int* tmp_arr = new int[arr_length + 1];
-            for(int i = 0; i < arr_length; i++) {
-                tmp_arr[i] = arr[i];
-            }
-            delete[] arr;
-            arr = tmp_arr;
+            if(!is_grade(input)) {
+                cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
+            } else {
+                number = stoi(input);
+                if(number <0 || number > 10) {
+                    cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
+                } else {
+                    if(number == 0)
+                        break;
+                    int* tmp_arr = new int[arr_length + 1];
+                    for(int i = 0; i < arr_length; i++) {
+                        tmp_arr[i] = arr[i];
+                    }
+                    delete[] arr;
+                    arr = tmp_arr;
 
-            arr[arr_length] = input;
-            arr_length++;
+                    arr[arr_length] = number;
+                    arr_length++;
+                }
+            }
         }
-    } while (cin && cin.peek() != '\n' ) ;
+    };
+    for(int i = 0; i < arr_length; i++) {
+        cout << arr[i] << endl;
+    }
     return arr;
 }
 
@@ -88,11 +117,59 @@ data* input_data(int& arr_length) {
         arr = tmp_arr;
 
         cout << "Vardas: ";
-        cin >> arr[arr_length].name;
+        string name;
+        while(true) {
+            cin >> name;
+            if(!check_name(name)) {
+                cout << "Ar " << name << " tikrai yra mokinio vardas? (y/n): ";
+                char confirm;
+                cin >> confirm;
+                if(confirm == 'y') {
+                    arr[arr_length].name = name;
+                    break;
+                } else {
+                    cout << "Vardas: ";
+                }
+            } else {
+                arr[arr_length].name = name;
+                break;
+            }
+        }
         cout << "Pavarde: ";
-        cin >> arr[arr_length].surname;
-        cout << "Egzamino rezultatas: ";
-        cin >> arr[arr_length].exam;
+        string surname;
+        while(true) {
+            cin >> surname;
+            if(!check_name(surname)) {
+                cout << "Ar " << surname << " tikrai yra mokinio pavarde? (y/n): ";
+                char confirm;
+                cin >> confirm;
+                if(confirm == 'y') {
+                    arr[arr_length].surname = surname;
+                    break;
+                } else {
+                    cout << "Pavarde: ";
+                }
+            } else {
+                arr[arr_length].surname = surname;
+                break;
+            }
+        }
+        string exam;
+        while(true) {
+            cout << "Egzamino rezultatas: ";
+            cin >> exam;
+            if(!is_grade(exam)) {
+                cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
+            } else {
+                int number = stoi(exam);
+                if(number <=0 || number > 10) {
+                    cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
+                } else {
+                    arr[arr_length].exam = number;
+                    break;
+                }
+            }
+        }
         int grades_arr_length = 0;
         arr[arr_length].grades = input_grades(grades_arr_length);
         arr[arr_length].grades_len = grades_arr_length;
