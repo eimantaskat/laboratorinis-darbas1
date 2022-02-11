@@ -25,6 +25,7 @@ bool is_grade(string s);
 void quickSort(int array[], int first, int last);
 bool check_name(string s);
 double average(int* arr, int arr_length);
+double median(int* arr, int arr_length);
 void print(data* arr, int arr_length);
 
 int main() {
@@ -74,6 +75,15 @@ int* input_grades(int& arr_length) {
     };
     
     return arr;
+}
+
+double median(int* arr, int arr_length) {
+    quickSort(arr, 0, arr_length-1);
+    if(arr_length % 2 == 0) {
+        return (arr[arr_length/2] + arr[arr_length / 2] - 1) / 2.0;
+    } else  {
+        return arr[arr_length/2];
+    }
 }
 
 data* input_data(int& arr_length) {
@@ -199,7 +209,6 @@ bool check_name(string s) {
 }
 
 double average(int* arr, int arr_length) {
-    // cout << arr_length << endl;
     if(arr_length > 0) {
         return accumulate(arr, arr + arr_length, 0.0) / arr_length;
     } else {
@@ -211,12 +220,13 @@ void print(data* arr, int arr_length) {
     cout << endl;
     cout << left << setw(12) << "Vardas" 
         << left << setw(12) << " Pavarde"
-        << left << setw(12) << " Galutinis (vid.)" << endl;
-    cout << "-----------------------------------------------------" << endl;
-    // cout << setw(20) << setfill('-') << "" << endl;
+        << left << setw(20) << " Galutinis (vid.)"
+        << left << setw(20) << " Galutinis (med.)" << endl;
+    cout << "-------------------------------------------------------------" << endl;
     for(int i = 0; i < arr_length; i++) {
         cout << left << setw(12) << arr[i].name << " " 
             << left << setw(12) << arr[i].surname << " " 
-            << left << setw(12) << setprecision(2) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
+            << left << setw(20) << setprecision(2) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam
+            << left << setw(20) << setprecision(2) << 0.4 * median(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
     }
 }
