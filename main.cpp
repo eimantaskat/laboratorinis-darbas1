@@ -22,37 +22,10 @@ struct data {
 data* input_data(int& arr_length);
 int* input_grades(int& arr_length);
 bool is_grade(string s);
-
-bool check_name(string s) {
-    std::regex reg("^[A-Z][a-z]*$");
-    if(std::regex_match(s, reg))
-        return true;
-    else
-        return false;
-}
-
-double average(int* arr, int arr_length) {
-    // cout << arr_length << endl;
-    if(arr_length > 0) {
-        return accumulate(arr, arr + arr_length, 0.0) / arr_length;
-    } else {
-        return 0;
-    }
-}
-
-void print(data* arr, int arr_length) {
-    cout << endl;
-    cout << left << setw(12) << "Vardas" 
-        << left << setw(12) << " Pavarde"
-        << left << setw(12) << " Galutinis (vid.)" << endl;
-    cout << "-----------------------------------------------------" << endl;
-    // cout << setw(20) << setfill('-') << "" << endl;
-    for(int i = 0; i < arr_length; i++) {
-        cout << left << setw(12) << arr[i].name << " " 
-            << left << setw(12) << arr[i].surname << " " 
-            << left << setw(12) << setprecision(2) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
-    }
-}
+void quickSort(int array[], int first, int last);
+bool check_name(string s);
+double average(int* arr, int arr_length);
+void print(data* arr, int arr_length);
 
 int main() {
     int arr_length = 0;
@@ -63,7 +36,7 @@ int main() {
 
 bool is_grade(string s) {
     std::regex reg("[0-9]");
-    if(std::regex_match(s, reg))
+    if(std::regex_match(s, reg) || s == "10")
         return true;
     else
         return false;
@@ -81,7 +54,7 @@ int* input_grades(int& arr_length) {
                 cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
             } else {
                 number = stoi(input);
-                if(number <0 || number > 10) {
+                if(number < 0 || number > 10) {
                     cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
                 } else {
                     if(number == 0)
@@ -99,9 +72,7 @@ int* input_grades(int& arr_length) {
             }
         }
     };
-    for(int i = 0; i < arr_length; i++) {
-        cout << arr[i] << endl;
-    }
+    
     return arr;
 }
 
@@ -183,4 +154,69 @@ data* input_data(int& arr_length) {
         }
     }
     return arr;
+}
+
+void quickSort(int array[], int first, int last) {
+    if (first < last) {
+        // find pivot element that all smaller elements are on the left, greater on the right
+        
+        // select last element as pivot
+        int pivot = array[last];
+
+        // select first element as greater
+        int i = first;
+
+        // compare every element of array with pivot
+        for (int j = first; j < last; j++) {
+            // if element smaller than pivot is found, swap it with greater element
+            if (array[j] <= pivot) {
+                int tmp =  array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+
+                // select next element as greater
+                i++;
+            }
+        }
+
+        // swap pivot with greater element
+        int tmp =  array[i];
+        array[i] = array[last];
+        array[last] = tmp;
+
+        // quick sort left and right sides 
+        quickSort(array, first, i - 1);
+        quickSort(array, i + 1, last);
+    }
+}
+
+bool check_name(string s) {
+    std::regex reg("^[A-Z][a-z]*$");
+    if(std::regex_match(s, reg))
+        return true;
+    else
+        return false;
+}
+
+double average(int* arr, int arr_length) {
+    // cout << arr_length << endl;
+    if(arr_length > 0) {
+        return accumulate(arr, arr + arr_length, 0.0) / arr_length;
+    } else {
+        return 0;
+    }
+}
+
+void print(data* arr, int arr_length) {
+    cout << endl;
+    cout << left << setw(12) << "Vardas" 
+        << left << setw(12) << " Pavarde"
+        << left << setw(12) << " Galutinis (vid.)" << endl;
+    cout << "-----------------------------------------------------" << endl;
+    // cout << setw(20) << setfill('-') << "" << endl;
+    for(int i = 0; i < arr_length; i++) {
+        cout << left << setw(12) << arr[i].name << " " 
+            << left << setw(12) << arr[i].surname << " " 
+            << left << setw(12) << setprecision(2) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
+    }
 }
