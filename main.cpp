@@ -22,16 +22,34 @@ struct data {
 data* input_data(int& arr_length);
 int* input_grades(int& arr_length);
 bool is_grade(string s);
-void quickSort(int array[], int first, int last);
+void quick_sort(int array[], int first, int last);
 bool check_name(string s);
 double average(int* arr, int arr_length);
 double median(int* arr, int arr_length);
-void print(data* arr, int arr_length);
+void print(data* arr, int arr_length, int s);
+bool check_select(string s) {
+    std::regex reg("[1-2]");
+    if(std::regex_match(s, reg))
+        return true;
+    else
+        return false;
+}
 
 int main() {
     int arr_length = 0;
     data* arr = input_data(arr_length);
-    print(arr, arr_length);
+    cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
+    string select;
+    while (true) {
+        cin >> select;
+        if(!check_select(select)) {
+            cout << "Iveskite 1 arba 2" << endl;
+        } else {
+            int s = stoi(select);
+            print(arr, arr_length, s);
+            break;
+        }
+    }
 }
 
 
@@ -78,7 +96,7 @@ int* input_grades(int& arr_length) {
 }
 
 double median(int* arr, int arr_length) {
-    quickSort(arr, 0, arr_length-1);
+    quick_sort(arr, 0, arr_length-1);
     if(arr_length % 2 == 0) {
         return (arr[arr_length/2] + arr[arr_length / 2] - 1) / 2.0;
     } else  {
@@ -166,7 +184,7 @@ data* input_data(int& arr_length) {
     return arr;
 }
 
-void quickSort(int array[], int first, int last) {
+void quick_sort(int array[], int first, int last) {
     if (first < last) {
         // find pivot element that all smaller elements are on the left, greater on the right
         
@@ -195,8 +213,8 @@ void quickSort(int array[], int first, int last) {
         array[last] = tmp;
 
         // quick sort left and right sides 
-        quickSort(array, first, i - 1);
-        quickSort(array, i + 1, last);
+        quick_sort(array, first, i - 1);
+        quick_sort(array, i + 1, last);
     }
 }
 
@@ -216,17 +234,29 @@ double average(int* arr, int arr_length) {
     }
 }
 
-void print(data* arr, int arr_length) {
+void print(data* arr, int arr_length, int s) {
     cout << endl;
     cout << left << setw(12) << "Vardas" 
-        << left << setw(12) << " Pavarde"
-        << left << setw(20) << " Galutinis (vid.)"
-        << left << setw(20) << " Galutinis (med.)" << endl;
-    cout << "-------------------------------------------------------------" << endl;
+        << left << setw(12) << " Pavarde";
+    switch(s) {
+        case 1:
+            cout << left << setw(20) << " Galutinis (vid.)" << endl;
+            break;
+        case 2:
+            cout << left << setw(20) << " Galutinis (med.)" << endl;
+            break;
+    }
+    cout << std::string(44, '-') << endl;
     for(int i = 0; i < arr_length; i++) {
         cout << left << setw(12) << arr[i].name << " " 
-            << left << setw(12) << arr[i].surname << " " 
-            << left << setw(20) << setprecision(2) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam
-            << left << setw(20) << setprecision(2) << 0.4 * median(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
+            << left << setw(12) << arr[i].surname << " ";
+            switch(s) {
+                case 1:
+                    cout << left << setw(20) << setprecision(2) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
+                    break;
+                case 2:
+                    cout << left << setw(20) << setprecision(2) << 0.4 * median(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
+                    break;
+            }
     }
 }
