@@ -98,7 +98,7 @@ int* input_grades(int& arr_length) {
 double median(int* arr, int arr_length) {
     quick_sort(arr, 0, arr_length-1);
     if(arr_length % 2 == 0) {
-        return (arr[arr_length/2] + arr[arr_length / 2] - 1) / 2.0;
+        return (arr[arr_length/2] + arr[(arr_length / 2) - 1]) / 2.0;
     } else  {
         return arr[arr_length/2];
     }
