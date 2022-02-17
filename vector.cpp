@@ -19,8 +19,8 @@ using std::vector;
 
 struct data {
     string name, surname;
-    int* grades = new int[1];
-    int exam, grades_len = 0;
+    int exam;
+    vector<int> grades;
 };
 
 bool is_grade(string s);
@@ -85,7 +85,7 @@ bool check_select(string s) {
 
 
 // sorting algorythm
-void quick_sort(int array[], int first, int last) {
+void quick_sort(vector<int>& array, int first, int last) {
     if (first < last) {
         // find pivot element that all smaller elements are on the left, greater on the right
         
@@ -121,7 +121,7 @@ void quick_sort(int array[], int first, int last) {
 
 
 // function to find median of an array
-double median(int* arr, int arr_length) {
+double median(vector<int> arr, int arr_length) {
     // sort an array
     quick_sort(arr, 0, arr_length-1);
     // std::sort(&arr[0], &arr[arr_length-1]);
@@ -136,24 +136,24 @@ double median(int* arr, int arr_length) {
 }
 
 // function to calculate the average of an array
-double average(int* arr, int arr_length) {
+double average(vector<int> arr, int arr_length) {
     // if array is not empty
     // calculate the sum of elements and divide it by the length of an array
     if(arr_length > 0) {
-        return accumulate(arr, arr + arr_length, 0.0) / arr_length;
+        return accumulate(arr.begin(), arr.end(), 0.0) / arr_length;
     } else {
         return 0;
     }
 }
 
 // funtion to input homework grades
-void input_grades(int*& arr, int& arr_length) {
+void input_grades(vector<int>& grades) {
     cout << "Iveskite namu darbu rezultatus, norint baigti, iveskite 0: " << endl;
     string input;
     int number = 10;
     while(true) {
         // input and verify grade
-        cout << arr_length + 1 << " pazymys: ";
+        cout << grades.size() + 1 << " pazymys: ";
         if(cin >> input) {
             if(!is_grade(input)) {
                 cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
@@ -166,15 +166,7 @@ void input_grades(int*& arr, int& arr_length) {
                     // else expand array
                     if(number == 0)
                         break;
-                    int* tmp_arr = new int[arr_length + 1];
-                    for(int i = 0; i < arr_length; i++) {
-                        tmp_arr[i] = arr[i];
-                    }
-                    delete[] arr;
-                    arr = tmp_arr;
-
-                    arr[arr_length] = number;
-                    arr_length++;
+                    grades.push_back(number);
                 }
             }
         }
@@ -198,7 +190,7 @@ void input_data(vector<data>& arr) {
                 cout << "Ar " << name << " tikrai yra mokinio vardas? (y/n): ";
                 char confirm;
                 cin >> confirm;
-                if(confirm == 'y' || confirm == 'Y') {
+                if(confirm == 'y') {
                     arr[i].name = name;
                     break;
                 } else {
@@ -219,7 +211,7 @@ void input_data(vector<data>& arr) {
                 cout << "Ar " << surname << " tikrai yra mokinio pavarde? (y/n): ";
                 char confirm;
                 cin >> confirm;
-                if(confirm == 'y' || confirm == 'Y') {
+                if(confirm == 'y') {
                     arr[i].surname = surname;
                     break;
                 } else {
@@ -234,7 +226,7 @@ void input_data(vector<data>& arr) {
         char random;
         cout << "Ar norite sugeneruoti atsitiktinius balus uz namu darbus ir egzamina? (y/n): ";
         cin >> random;
-        if(random == 'y' || random == 'Y') {
+        if(random == 'y') {
             // intitialise random number generator
             srand(time(NULL));
             // generate exam result
@@ -250,12 +242,9 @@ void input_data(vector<data>& arr) {
             }
             
             // generate array of random grades
-            arr[i].grades = new int [n];
-            arr[i].grades_len = n;
             for(int j = 0; j < n; j++) {
-                arr[i].grades[j] = 1 + rand() % 10;
+                arr[i].grades.push_back(1 + rand() % 10);
             }
-            
 
         } else {
             // input and verify exam result
@@ -277,16 +266,14 @@ void input_data(vector<data>& arr) {
             }
             // input homework grades
             int grades_arr_length = 0;
-            input_grades(arr[i].grades, grades_arr_length);
-            arr[i].grades_len = grades_arr_length;
-            i++;
+            input_grades(arr[i].grades);
         }
-
+        i++;
         // add more students or stop
         char add_more;
         cout << "Ar norite prideti dar vieno mokinio duomenis? (y/n): ";
         cin >> add_more;
-        if(add_more != 'y' || add_more != 'Y') {
+        if(add_more != 'y') {
             add_data = false;
         }
     }
@@ -316,10 +303,10 @@ void print(vector<data> arr, int s) {
             // calculate final grade using average or median based on s value
             switch(s) {
                 case 1:
-                    cout << left << setw(20) << setprecision(3) << 0.4 * average(i.grades, i.grades_len) + 0.6 * i.exam << endl;
+                    cout << left << setw(20) << setprecision(3) << 0.4 * average(i.grades, i.grades.size()) + 0.6 * i.exam << endl;
                     break;
                 case 2:
-                    cout << left << setw(20) << setprecision(3) << 0.4 * median(i.grades, i.grades_len) + 0.6 * i.exam << endl;
+                    cout << left << setw(20) << setprecision(3) << 0.4 * median(i.grades, i.grades.size()) + 0.6 * i.exam << endl;
                     break;
             }
     }
