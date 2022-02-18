@@ -324,10 +324,10 @@ void print(data* arr, int arr_length, int s) {
             // calculate final grade using average or median based on s value
             switch(s) {
                 case 1:
-                    cout << left << setw(20) << setprecision(2) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
+                    cout << left << setw(20) << setprecision(3) << 0.4 * average(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
                     break;
                 case 2:
-                    cout << left << setw(20) << setprecision(2) << 0.4 * median(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
+                    cout << left << setw(20) << setprecision(3) << 0.4 * median(arr[i].grades, arr[i].grades_len) + 0.6 * arr[i].exam << endl;
                     break;
             }
     }
