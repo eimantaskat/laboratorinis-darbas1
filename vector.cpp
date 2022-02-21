@@ -26,10 +26,10 @@ struct data {
 bool is_grade(string s);
 bool check_name(string s);
 bool check_select(string s);
-void quick_sort(int array[], int first, int last);
-double median(int* arr, int arr_length);
-double average(int* arr, int arr_length);
-int* input_grades(int& arr_length);
+void quick_sort(vector<int>& array, int first, int last);
+double median(vector<int> arr);
+double average(vector<int> arr);
+void input_grades(vector<int>& grades);
 void input_data(vector<data>& arr);
 void print(vector<data> arr, int s);
 
@@ -121,26 +121,26 @@ void quick_sort(vector<int>& array, int first, int last) {
 
 
 // function to find median of an array
-double median(vector<int> arr, int arr_length) {
+double median(vector<int> arr) {
     // sort an array
-    quick_sort(arr, 0, arr_length-1);
+    quick_sort(arr, 0, arr.size()-1);
     // std::sort(&arr[0], &arr[arr_length-1]);
 
     // if array has even number of elements return average of middle elements
     // else return middle element
-    if(arr_length % 2 == 0) {
-        return (arr[arr_length/2] + arr[(arr_length / 2) - 1]) / 2.0;
+    if(arr.size() % 2 == 0) {
+        return (arr[arr.size()/2] + arr[(arr.size() / 2) - 1]) / 2.0;
     } else  {
-        return arr[arr_length/2];
+        return arr[arr.size()/2];
     }
 }
 
 // function to calculate the average of an array
-double average(vector<int> arr, int arr_length) {
+double average(vector<int> arr) {
     // if array is not empty
     // calculate the sum of elements and divide it by the length of an array
-    if(arr_length > 0) {
-        return accumulate(arr.begin(), arr.end(), 0.0) / arr_length;
+    if(arr.size() > 0) {
+        return accumulate(arr.begin(), arr.end(), 0.0) / arr.size();
     } else {
         return 0;
     }
@@ -303,10 +303,10 @@ void print(vector<data> arr, int s) {
             // calculate final grade using average or median based on s value
             switch(s) {
                 case 1:
-                    cout << left << setw(20) << setprecision(3) << 0.4 * average(i.grades, i.grades.size()) + 0.6 * i.exam << endl;
+                    cout << left << setw(20) << setprecision(3) << 0.4 * average(i.grades) + 0.6 * i.exam << endl;
                     break;
                 case 2:
-                    cout << left << setw(20) << setprecision(3) << 0.4 * median(i.grades, i.grades.size()) + 0.6 * i.exam << endl;
+                    cout << left << setw(20) << setprecision(3) << 0.4 * median(i.grades) + 0.6 * i.exam << endl;
                     break;
             }
     }
