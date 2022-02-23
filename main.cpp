@@ -6,6 +6,7 @@
 #include <vector>
 #include <random>
 #include <ctime>
+#include <fstream>
 
 using std::string;
 using std::cout;
@@ -32,24 +33,39 @@ double average(vector<int> arr);
 void input_grades(vector<int>& grades);
 void input_data(vector<data>& arr);
 void print(vector<data> arr, int s);
+void read_data(vector<data>& arr, string filename);
+
 
 int main() {
     // input data
     vector<data> arr;
-    input_data(arr);
+    string from_file;
+    cout << "Ar norite nuskaityti duomenis is failo? (y/n): ";
+    cin >> from_file;
+    if (from_file == "y") {
+        // read from file
+        cout << "Iveskite failo pavadinima su pletiniu: ";
+        string filename;
+        cin >> filename;
+        read_data(arr, filename);
+        print(arr, 3);
+    } else {
+        // input manually
+        input_data(arr);
 
-    // ask user how to calculate final grade
-    cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
-    string select;
-    while (true) {
-        cin >> select;
-        if(!check_select(select)) {
-            cout << "Iveskite 1 arba 2" << endl;
-        } else {
-            int s = stoi(select);
-            // print data
-            print(arr, s);
-            break;
+        // ask user how to calculate final grade
+        cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
+        string select;
+        while (true) {
+            cin >> select;
+            if(!check_select(select)) {
+                cout << "Iveskite 1 arba 2" << endl;
+            } else {
+                int s = stoi(select);
+                // print data
+                print(arr, s);
+                break;
+            }
         }
     }
 }
@@ -283,23 +299,27 @@ void input_data(vector<data>& arr) {
 void print(vector<data> arr, int s) {
     // print header line
     cout << endl;
-    cout << left << setw(12) << "Vardas" 
-        << left << setw(12) << " Pavarde";
+    cout << left << setw(15) << "Vardas" 
+        << left << setw(15) << " Pavarde";
     // print based on s value
     switch(s) {
         case 1:
-            cout << left << setw(20) << " Galutinis (vid.)" << endl;
+            cout << left << setw(15) << " Galutinis (vid.)" << endl;
+            cout << std::string(45, '-') << endl;
             break;
         case 2:
-            cout << left << setw(20) << " Galutinis (med.)" << endl;
+            cout << left << setw(15) << " Galutinis (med.)" << endl;
+            cout << std::string(45, '-') << endl;
+            break;
+        case 3:
+            cout << left << setw(15) << " Galutinis (vid.)" << left << setw(15) << " Galutinis (med.)" << endl;
+            cout << std::string(60, '-') << endl;
             break;
     }
-    // print a line of dashes
-    cout << std::string(44, '-') << endl;
     // print all elements of an array
     for(auto i:arr) {
-        cout << left << setw(12) << i.name << " " 
-            << left << setw(12) << i.surname << " ";
+        cout << left << setw(15) << i.name << " " 
+            << left << setw(15) << i.surname << " ";
             // calculate final grade using average or median based on s value
             switch(s) {
                 case 1:
@@ -308,6 +328,45 @@ void print(vector<data> arr, int s) {
                 case 2:
                     cout << left << setw(20) << setprecision(3) << 0.4 * median(i.grades) + 0.6 * i.exam << endl;
                     break;
+                case 3:
+                    cout << left << setw(20) << setprecision(3) << 0.4 * average(i.grades) + 0.6 * i.exam 
+                        << left << setw(20) << setprecision(3) << 0.4 * median(i.grades) + 0.6 * i.exam << endl;
+                    break;
             }
     }
+}
+
+void read_data(vector<data>& arr, string filename) {
+    // open file
+    std::ifstream file;
+    file.open(filename);
+    // read file header
+    vector<string> header;
+    header.reserve(4);
+    while (file.peek() != '\n') {
+        string data;
+        file >> data;
+        header.push_back(data);
+    }
+
+    // get homework count
+    int homework_count = header.size() - 3;
+    header.clear();
+
+    // read data
+    data temp;
+    int i = 0;
+    while (!file.eof()) {
+        arr.push_back(data());
+        file >> arr[i].name >> arr[i].surname;
+        for (int j = 0; j < homework_count; j++) {
+            arr[i].grades.push_back(int());
+            file >> arr[i].grades[j];
+        }
+        file >> arr[i].exam;
+        i++;
+    }
+    
+    // close file
+    file.close();
 }
