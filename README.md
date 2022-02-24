@@ -42,3 +42,29 @@ Vardas &emsp; Pavarde &emsp; Galutinis (vid.)
 \--------------------------------------------  
 Arvydas &emsp; Sabonis &emsp;&ensp; 7.7  
 Rimas &emsp;&emsp;  Kurtinaitis &nbsp;  7.4
+
+# ***v0.2***
+Panaikinta programos realizacija su masyvais, **vector.cpp** pervadintas į **main.cpp**
+### Duomenų įvedimas
+---
+Duomenis įvesti galima iš failo. Įjungus programą, naudotojo yra paklausiama, ar jis nori duomenis įvesti pats, ar nuskaityti iš failo. Pasirinkus nuskaitymą iš failo, yra paprašoma įvesti duomenų failo pavadinimą su plėtiniu, pvz.: *kursiokai.txt*
+
+#### Duomenų failo strukrūra
+* Pirmoji eilutė turi būti antraštė, kurioje turi būti užrašyta vardas, pavardė, **n** namų darbų skaičius ir egzaminas.
+    ```
+        Vardas    Pavardė    ND1  ND2  ... NDn Egzaminas
+    ```
+    **Pvz.:**
+    ```
+        Vardas    Pavarde    ND1  ND2  ND3  ND4  ND5  ND6  ND7  Egz.
+    ```
+* Kitose eilutėse gali būti neribotas kiekis studentų duomenų
+
+### Duomenų išvedimas
+**Nuskaičius duomenis iš failo, jie yra pateikiami tokioje lentelėje:**  
+Vardas &emsp; Pavarde &emsp; Galutinis (vid.) &ensp; Galutinis (med.)  
+\------------------------------------------------------------  
+Arvydas &nbsp; Sabonis &emsp; &emsp; &nbsp; 7.7 &emsp; &emsp; &emsp; &emsp; &emsp; 7.5  
+Rimas &emsp;&nbsp; Kurtinaitis &emsp; &nbsp;&nbsp; 7.4 &emsp; &emsp; &emsp; &emsp; &emsp; 7.8
+
+Studentai yra surūšiuoti abėcėlės tvarka
