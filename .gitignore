@@ -32,3 +32,5 @@
 *.app
 
 *0000.txt
+
+.vscode
