@@ -17,7 +17,7 @@ void input_grades(vector<int>& grades) {
                     cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
                 } else {
                     // if input is 0 break the loop 
-                    // else expand array
+                    // else add grade to an array
                     if(number == 0)
                         break;
                     grades.push_back(number);
@@ -29,9 +29,8 @@ void input_grades(vector<int>& grades) {
 
 // function to input data
 void input_data(vector<data>& arr) {
-    bool add_data = true;
     int i = 0;
-    while (add_data) {
+    while (true) {
         // add new element to an array
         arr.push_back(data());
 
@@ -83,6 +82,7 @@ void input_data(vector<data>& arr) {
         if(random == 'y') {
             // intitialise random number generator
             srand(time(NULL));
+
             // generate exam result
             arr[i].exam = 1 + rand() % 10;
             
@@ -110,7 +110,7 @@ void input_data(vector<data>& arr) {
                     cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
                 } else {
                     int number = stoi(exam);
-                    if(number <=0 || number > 10) {
+                    if(number <= 0 || number > 10) {
                         cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << endl;
                     } else {
                         arr[i].exam = number;
@@ -118,8 +118,8 @@ void input_data(vector<data>& arr) {
                     }
                 }
             }
+
             // input homework grades
-            int grades_arr_length = 0;
             input_grades(arr[i].grades);
         }
         i++;
@@ -128,43 +128,69 @@ void input_data(vector<data>& arr) {
         cout << "Ar norite prideti dar vieno mokinio duomenis? (y/n): ";
         cin >> add_more;
         if(add_more != 'y') {
-            add_data = false;
+            break;
         }
     }
 }
 
 // function to read data from file
 void read_data(vector<data>& arr, string filename) {
-    // open file
-    std::ifstream file;
-    file.open(filename);
-    // read file header
-    vector<string> header;
-    header.reserve(4);
-    while (file.peek() != '\n') {
-        string data;
-        file >> data;
-        header.push_back(data);
-    }
-
-    // get homework count
-    int homework_count = header.size() - 3;
-    header.clear();
-
-    // read data
-    data temp;
-    int i = 0;
-    while (!file.eof()) {
-        arr.push_back(data());
-        file >> arr[i].name >> arr[i].surname;
-        for (int j = 0; j < homework_count; j++) {
-            arr[i].grades.push_back(int());
-            file >> arr[i].grades[j];
+    try {
+        // open file
+        std::ifstream file(filename);
+        if (!file) {
+            throw(1);
         }
-        file >> arr[i].exam;
-        i++;
+
+        int lines_count = 0;
+        string line;
+        while (getline(file, line)) {
+            lines_count++;
+        }
+        
+        file.close();
+        file.open(filename);
+        
+        // read file header
+        vector<string> header;
+        header.reserve(4);
+        while (file.peek() != '\n') {
+            string data;
+            file >> data;
+            header.push_back(data);
+        }
+
+        // get homework count
+        int homework_count = header.size() - 3;
+        header.clear();
+
+        // read data
+        data temp;
+        int i = 0;
+        while (!file.eof()) {
+            arr.push_back(data());
+            file >> arr[i].name >> arr[i].surname;
+            for (int j = 0; j < homework_count; j++) {
+                arr[i].grades.push_back(int());
+                file >> arr[i].grades[j];
+            }
+            file >> arr[i].exam;
+            if (i > lines_count) {
+                throw(2);
+            }
+            i++;
+        }
+        
+        // close file
+        file.close();
+    } catch (int err) {
+        switch (err) {
+        case 1: 
+            cout << "Failas neegzistuoja" << endl;
+            break;
+        case 2:
+            arr.clear();
+            cout << "Faile yra kalida" << endl;
+        }
     }
-    
-    // close file
-    file.close();
 }
