@@ -68,3 +68,7 @@ Arvydas &nbsp; Sabonis &emsp; &emsp; &nbsp; 7.7 &emsp; &emsp; &emsp; &emsp; &ems
 Rimas &emsp;&nbsp; Kurtinaitis &emsp; &nbsp;&nbsp; 7.4 &emsp; &emsp; &emsp; &emsp; &emsp; 7.8
 
 Studentai yra surūšiuoti abėcėlės tvarka
+
+# ***v0.3***
+* Programa padalinta penkis *.cpp ir du *.h failus
+* Naudojamas išimčių valdymas
