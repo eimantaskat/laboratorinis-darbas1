@@ -1,5 +1,10 @@
 #include "functions.h"
 
+bool compareByName(const data &a, const data &b)
+{
+    return a.name+a.surname < b.name+b.surname;
+}
+
 int main() {
     // input data
     vector<data> arr;
@@ -17,7 +22,8 @@ int main() {
 
             read_data(arr, filename);
             if (arr.size() > 0) {
-                quick_sort(arr, 0, arr.size()-1);
+                // quick_sort(arr, 0, arr.size()-1);
+                std::sort(arr.begin(), arr.end(), compareByName);
                 print(arr, 3);
                 break;
             }

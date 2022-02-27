@@ -164,6 +164,7 @@ void read_data(vector<data>& arr, string filename) {
         int homework_count = header.size() - 3;
         header.clear();
 
+        arr.reserve(lines_count - 1);
         // read data
         data temp;
         int i = 0;
@@ -180,7 +181,6 @@ void read_data(vector<data>& arr, string filename) {
             }
             i++;
         }
-        
         // close file
         file.close();
     } catch (int err) {
