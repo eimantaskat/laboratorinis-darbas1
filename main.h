@@ -10,6 +10,7 @@
 #include <random>
 #include <ctime>
 #include <fstream>
+#include <algorithm>
 
 using std::string;
 using std::cout;
