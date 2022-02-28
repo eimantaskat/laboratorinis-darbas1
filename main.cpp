@@ -1,8 +1,17 @@
 #include "functions.h"
 
-bool compareByName(const data &a, const data &b)
-{
-    return a.name+a.surname < b.name+b.surname;
+bool compareByName(const data &a, const data &b) {
+    if (a.name != b.name)
+        return a.name < b.name;
+    else
+        return a.surname < b.surname;
+}
+
+bool compareBySurname(const data &a, const data &b) {
+    if (a.surname != b.surname)
+        return a.surname < b.surname;
+    else
+        return a.name < b.name;
 }
 
 int main() {
@@ -22,9 +31,31 @@ int main() {
 
             read_data(arr, filename);
             if (arr.size() > 0) {
-                // quick_sort(arr, 0, arr.size()-1);
-                std::sort(arr.begin(), arr.end(), compareByName);
-                print(arr, 3);
+                cout << "Pagal ka norite rusiuoti studentus?\n1. Varda\n2. Pavarde\n";
+                string select;
+
+                while (true) {
+                    cin >> select;
+                    if(!check_select(select)) {
+                        cout << "Iveskite 1 arba 2" << endl;
+                    } else {
+                        int s = stoi(select);
+                        
+                        // quick_sort(arr, 0, arr.size()-1);
+                        switch (s) {
+                        case 1:
+                            std::sort(arr.begin(), arr.end(), compareByName);
+                            break;
+                        
+                        case 2:
+                            std::sort(arr.begin(), arr.end(), compareBySurname);
+                            break;
+                        }
+                        
+                        print(arr, 3);
+                        break;
+                    }
+                }
                 break;
             }
         }
