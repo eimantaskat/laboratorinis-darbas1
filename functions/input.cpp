@@ -190,7 +190,7 @@ void read_data(vector<data>& arr, string filename) {
             break;
         case 2:
             arr.clear();
-            cout << "Faile yra kalida" << endl;
+            cout << "Faile yra klaida" << endl;
         }
     }
 }
