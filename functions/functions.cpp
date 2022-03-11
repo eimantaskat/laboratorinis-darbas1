@@ -66,3 +66,40 @@ void print(vector<data> arr, int s) {
             }
     }
 }
+
+// function to generate file with random data
+void generate(int n, int nd) {
+    // initialise random number generator
+    using hrClock = std::chrono::high_resolution_clock;
+    std::mt19937 mt;
+    mt.seed(static_cast<long unsigned int>(hrClock::now().time_since_epoch().count()));
+    std::uniform_int_distribution<int> dist(0, 10);
+
+    // open output file
+    std::ofstream file(std::to_string(n) + "st_" + std::to_string(nd) + "nd.txt");
+
+    // write header line
+    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
+    for (int i = 0; i < nd; i++) {
+        file << std::right << setw(5) << "ND" + std::to_string(i+1);
+    }
+    file << setw(5) << "Egz." << endl;
+
+    std::stringstream line;
+    for (int i = 0; i < n; i++) {
+        // write name and surname to stringstream
+        line << left << setw(20) << "Vardas" + std::to_string(i + 1) << setw(20) << "Pavarde" + std::to_string(i + 1);
+        for (int i = 0; i <= nd; i++)
+            // write grades to stringstream
+            line << std::right << setw(5) << dist(mt);
+        if (i + 1 != n)
+            line << endl;
+        // every 1000 students copy data from stringstream to file
+        if (i % 1000 == 0) {
+            file << line.rdbuf();
+            line.clear();
+        }
+    }
+    file << line.rdbuf();
+    file.close();
+}

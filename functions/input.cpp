@@ -136,8 +136,6 @@ void input_data(vector<data>& arr) {
 // function to read data from file
 void read_data(vector<data>& arr, string filename) {
     try {
-        cout << "Starting file reading..." << endl;
-        std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
         // open file
         std::ifstream file(filename);
         if (!file) {
@@ -185,9 +183,6 @@ void read_data(vector<data>& arr, string filename) {
         }
         // close file
         file.close();
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        cout << "Done! ";
-        std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::seconds>(end - begin).count() << "s" << std::endl;
 
     } catch (int err) {
         switch (err) {

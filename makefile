@@ -1,6 +1,6 @@
 main:
-	g++ -o main main.cpp functions/functions.cpp functions/verification.cpp functions/sorting.cpp functions/input.cpp
+	g++ -o main main.cpp functions/*.cpp -O3
 run:
-	g++ -o main main.cpp functions/functions.cpp functions/verification.cpp functions/sorting.cpp functions/input.cpp; ./main
+	g++ -o main main.cpp functions/*.cpp -O3; ./main
 clean:
 	rm *.exe

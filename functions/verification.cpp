@@ -1,5 +1,21 @@
 #include "../functions.h"
 
+// functions to compare students for sorting
+
+bool compareByName(const data &a, const data &b) {
+    if (a.name != b.name)
+        return a.name < b.name;
+    else
+        return a.surname < b.surname;
+}
+
+bool compareBySurname(const data &a, const data &b) {
+    if (a.surname != b.surname)
+        return a.surname < b.surname;
+    else
+        return a.name < b.name;
+}
+
 // functions to check if input is correct
 
 bool is_grade(string s) {
@@ -9,6 +25,14 @@ bool is_grade(string s) {
         return true;
     else
         return false;
+}
+
+bool is_int(string s) {
+    for (int i = 0; i < s.length(); i++)
+        if (isdigit(s[i]) == false)
+            return false;
+ 
+    return true;
 }
 
 bool check_name(string s) {

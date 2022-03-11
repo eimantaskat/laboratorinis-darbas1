@@ -31,6 +31,8 @@
 *.out
 *.app
 
-*0000.txt
+*.txt
 
 .vscode
+
+test*.cpp
