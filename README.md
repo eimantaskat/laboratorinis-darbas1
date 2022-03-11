@@ -70,5 +70,23 @@ Rimas &emsp;&nbsp; Kurtinaitis &emsp; &nbsp;&nbsp; 7.4 &emsp; &emsp; &emsp; &ems
 Studentai yra surūšiuoti abėcėlės tvarka
 
 # ***v0.3***
-* Programa padalinta penkis *.cpp ir du *.h failus
+* Programa padalinta penkis *.cpp ir du *.h failus  
+    * **main.cpp**  
+        main funkcija
+    * **functions.cpp**  
+        vidurkio, medianos skaičiavimo ir rezultatų spausdinimo funkcijos
+    * **input.cpp**  
+        duomenų įvedimo rankomis ir skaitymo iš failo funkcijos
+    * **sorting.cpp**  
+        duomenų rušiavimo funkcijos
+    * **verification.cpp**  
+        duomenų tikrinimo funkcijos  
+      
+    * **main.h**  
+        *#include*, *using* sakiniai ir duomenų struktūra
+    * **functions.h**  
+        funkcijų aprašymai
 * Naudojamas išimčių valdymas
+
+# ***v0.4***
+* Failų su atsitiktiniais studentų pažymiais generavimas
