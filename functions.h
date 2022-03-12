@@ -1,5 +1,4 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#pragma once
 
 #include "main.h"
 
@@ -20,5 +19,7 @@ void read_data(vector<data>& arr, string filename);
 bool compareByName(const data&, const data&);
 bool compareBySurname(const data&, const data&);
 bool is_int(string);
-
-#endif
+void data_input();
+void write_students(string, vector<data>, vector<int>);
+void data_generation();
+void student_sorting();

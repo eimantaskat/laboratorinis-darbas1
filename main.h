@@ -1,5 +1,4 @@
-#ifndef MAIN_H
-#define MAIN_H
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -29,5 +28,3 @@ struct data {
     int exam;
     vector<int> grades;
 };
-
-#endif

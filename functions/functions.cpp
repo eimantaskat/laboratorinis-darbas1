@@ -26,47 +26,6 @@ double average(vector<int> arr) {
     }
 }
 
-// function to print results
-void print(vector<data> arr, int s) {
-    // print header line
-    cout << endl;
-    cout << left << setw(15) << "Vardas" 
-        << left << setw(15) << " Pavarde";
-    // print based on s value
-    switch(s) {
-        case 1:
-            cout << left << setw(15) << " Galutinis (vid.)" << endl;
-            cout << std::string(45, '-') << endl;
-            break;
-        case 2:
-            cout << left << setw(15) << " Galutinis (med.)" << endl;
-            cout << std::string(45, '-') << endl;
-            break;
-        case 3:
-            cout << left << setw(15) << " Galutinis (vid.)" << left << setw(15) << " Galutinis (med.)" << endl;
-            cout << std::string(60, '-') << endl;
-            break;
-    }
-    // print all elements of an array
-    for(auto i:arr) {
-        cout << left << setw(15) << i.name << " " 
-            << left << setw(15) << i.surname << " ";
-            // calculate final grade using average or median based on s value
-            switch(s) {
-                case 1:
-                    cout << left << setw(20) << setprecision(3) << 0.4 * average(i.grades) + 0.6 * i.exam << endl;
-                    break;
-                case 2:
-                    cout << left << setw(20) << setprecision(3) << 0.4 * median(i.grades) + 0.6 * i.exam << endl;
-                    break;
-                case 3:
-                    cout << left << setw(20) << setprecision(3) << 0.4 * average(i.grades) + 0.6 * i.exam 
-                        << left << setw(20) << setprecision(3) << 0.4 * median(i.grades) + 0.6 * i.exam << endl;
-                    break;
-            }
-    }
-}
-
 // function to generate file with random data
 void generate(int n, int nd) {
     // initialise random number generator
@@ -114,52 +73,8 @@ void split(vector<data> arr, double (*func)(vector<int>)) {
             kietiakai.push_back(i);
     }
     
-    std::ofstream file ("vargsiukai.txt");
-    // write data into files
+    write_students("kietiakai.txt", arr, kietiakai);
+    write_students("vargsiukai.txt", arr, kietiakai);
 
-    // write header line
-    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
-    for (int i = 0; i < arr[0].grades.size(); i++) {
-        file << std::right << setw(5) << "ND" + std::to_string(i+1);
-    }
-    file << setw(5) << "Egz." << endl;
-
-    std::stringstream line;
-    for(auto i:vargsiukai) {
-        line << left << setw(20) << arr[i].name << setw(20) << arr[i].surname;
-        for(int j = 0; j < arr[i].grades.size(); j++) {
-            line << std::right << setw(5) << arr[i].grades[j];
-        }
-        line << std::right << setw(5) << arr[i].exam << endl;
-        if (i % 1000 == 0) {
-            file << line.rdbuf();
-            line.clear();
-        }
-    }
-    file << line.rdbuf();
-    line.clear();
-    file.close();
-
-    file.open("kietiakai.txt");
-
-    // write header line
-    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
-    for (int i = 0; i < arr[0].grades.size(); i++) {
-        file << std::right << setw(5) << "ND" + std::to_string(i+1);
-    }
-    file << setw(5) << "Egz." << endl;
-
-    for(auto i:kietiakai) {
-        line << left << setw(20) << arr[i].name << setw(20) << arr[i].surname;
-        for(int j = 0; j < arr[i].grades.size(); j++) {
-            line << std::right << setw(5) << arr[i].grades[j];
-        }
-        line << std::right << setw(5) << arr[i].exam << endl;
-        if (i % 1000 == 0) {
-            file << line.rdbuf();
-            line.clear();
-        }
-    }
-    file << line.rdbuf();
-    file.close();
+    cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
