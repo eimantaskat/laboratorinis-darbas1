@@ -93,3 +93,12 @@ Studentai yra surūšiuoti abėcėlės tvarka
 * Studentų padalinimas į du failus pagal galutinį balą:
     * *vargsiukai.txt* - jei galutinis balas mažesnis nei 5
     * *kietiakiai.txt* - jei galutinis balas didesnis arba lygus 5
+
+### Programos spartos analizė
+| Įrašų kiekis | Failo generavimas, s | Duomenų nuskaitymas, s | Studentų rūšiavimas į dvi kategorijas, s | Studentų išvedimas į du naujus failus, s | Programos veikimo laikas, s |
+|---|---|---|---|---|---|
+| 1,000 | 0.01898 | 0.013995 | 0 | 0.011967 | 0.049866 |
+| 10,000 | 0.103756 | 0.089185 | 0.000984 | 0.033913 | 0.235321 |
+| 100,000 | 1.01728 | 0.836744 | 0.010006 | 0.323137 | 2.20845 |
+| 1,000,000 | 10.0511 | 7.81611 | 0.102726 | 3.29519 | 21.4242 |
+| 10,000,000 | 100.792 | 45.3273 | 0.581448 | 5.24896 | 152.8 |
