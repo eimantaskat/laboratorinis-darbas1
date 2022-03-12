@@ -103,3 +103,63 @@ void generate(int n, int nd) {
     file << line.rdbuf();
     file.close();
 }
+
+void split(vector<data> arr, double (*func)(vector<int>)) {
+    // calculate final grade and split students
+    vector<int> vargsiukai, kietiakai;
+    for(int i = 0; i < arr.size(); i++) {
+        if (0.4 * func(arr[i].grades) + 0.6 * arr[i].exam < 5)
+            vargsiukai.push_back(i);
+        else
+            kietiakai.push_back(i);
+    }
+    
+    std::ofstream file ("vargsiukai.txt");
+    // write data into files
+
+    // write header line
+    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
+    for (int i = 0; i < arr[0].grades.size(); i++) {
+        file << std::right << setw(5) << "ND" + std::to_string(i+1);
+    }
+    file << setw(5) << "Egz." << endl;
+
+    std::stringstream line;
+    for(auto i:vargsiukai) {
+        line << left << setw(20) << arr[i].name << setw(20) << arr[i].surname;
+        for(int j = 0; j < arr[i].grades.size(); j++) {
+            line << std::right << setw(5) << arr[i].grades[j];
+        }
+        line << std::right << setw(5) << arr[i].exam << endl;
+        if (i % 1000 == 0) {
+            file << line.rdbuf();
+            line.clear();
+        }
+    }
+    file << line.rdbuf();
+    line.clear();
+    file.close();
+
+    file.open("kietiakai.txt");
+
+    // write header line
+    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
+    for (int i = 0; i < arr[0].grades.size(); i++) {
+        file << std::right << setw(5) << "ND" + std::to_string(i+1);
+    }
+    file << setw(5) << "Egz." << endl;
+
+    for(auto i:kietiakai) {
+        line << left << setw(20) << arr[i].name << setw(20) << arr[i].surname;
+        for(int j = 0; j < arr[i].grades.size(); j++) {
+            line << std::right << setw(5) << arr[i].grades[j];
+        }
+        line << std::right << setw(5) << arr[i].exam << endl;
+        if (i % 1000 == 0) {
+            file << line.rdbuf();
+            line.clear();
+        }
+    }
+    file << line.rdbuf();
+    file.close();
+}

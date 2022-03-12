@@ -6,12 +6,12 @@ int main() {
     string from_file;
 
     string select;
-    cout << "Ka norite daryti?\n1 - ivesti duomeis\n2 - sugeneruoti duomenis\n";
+    cout << "Ka norite daryti?\n1 - ivesti duomeis\n2 - sugeneruoti duomenis\n3 - surusioti studentus\n";
 
     while (true) {
         cin >> select;
-        if(!check_select(select)) {
-            cout << "Iveskite 1 arba 2" << endl;
+        if(!check_select1(select)) {
+            cout << "Iveskite 1, 2 arba 3" << endl;
         } else {
             int s = stoi(select);
 
@@ -79,7 +79,7 @@ int main() {
                     }
                     break;
                 
-                case 2:
+                case 2: {
                     int n, nd;
                     string input;
                     cout << "Kiek studentu duomenu norite sugeneruoti?\n";
@@ -109,6 +109,45 @@ int main() {
                         cout << "Ivyko klaida\n";
                     }
                     break;
+                }
+                case 3: {
+                    while (true) {
+                        // read from file
+                        cout << "Iveskite failo pavadinima su pletiniu: ";
+                        string filename;
+                        cin >> filename;
+
+                        read_data(arr, filename);
+                        if (arr.size() > 0) {
+
+                            // ask user how to calculate final grade
+                            cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
+                            string select;
+
+                            while (true) {
+                                cin >> select;
+
+                                if(!check_select(select)) {
+                                    cout << "Iveskite 1 arba 2" << endl;
+                                } else {
+                                    int s = stoi(select);
+                                    switch (s) {
+                                    case 1:
+                                        split(arr, &average);
+                                        break;
+                                    
+                                    case 2:
+                                        split(arr, &median);
+                                        break;
+                                    }
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
             }
             break;
         }

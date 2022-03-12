@@ -52,3 +52,12 @@ bool check_select(string s) {
     else
         return false;
 }
+
+bool check_select1(string s) {
+    // if string is equal either to 1 or 2 return true
+    std::regex reg("[1-3]");
+    if(std::regex_match(s, reg))
+        return true;
+    else
+        return false;
+}
