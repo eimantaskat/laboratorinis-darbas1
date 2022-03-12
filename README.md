@@ -90,3 +90,6 @@ Studentai yra surūšiuoti abėcėlės tvarka
 
 # ***v0.4***
 * Failų su atsitiktiniais studentų pažymiais generavimas
+* Studentų padalinimas į du failus pagal galutinį balą:
+    * *vargsiukai.txt* - jei galutinis balas mažesnis nei 5
+    * *kietiakiai.txt* - jei galutinis balas didesnis arba lygus 5
