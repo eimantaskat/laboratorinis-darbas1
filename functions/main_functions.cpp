@@ -105,6 +105,32 @@ void student_sorting() {
         cin >> filename;
 
         read_data(arr, filename);
+
+        cout << "Pagal ka norite rusiuoti studentus?\n1. Varda\n2. Pavarde\n";
+
+        while (true) {
+            string select;
+            cin >> select;
+            if(!check_select(select)) {
+                cout << "Iveskite 1 arba 2" << endl;
+            } else {
+                int s = stoi(select);
+                
+                // quick_sort(arr, 0, arr.size()-1);
+                switch (s) {
+                case 1:
+                    std::sort(arr.begin(), arr.end(), compareByName);
+                    break;
+                
+                case 2:
+                    std::sort(arr.begin(), arr.end(), compareBySurname);
+                    break;
+                }
+                break;
+            }
+        }
+
+
         if (arr.size() > 0) {
 
             // ask user how to calculate final grade
