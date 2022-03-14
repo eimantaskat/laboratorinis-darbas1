@@ -136,27 +136,35 @@ void input_data(vector<data>& arr) {
 // function to read data from file
 void read_data(vector<data>& arr, string filename) {
     try {
+        std::stringstream buffer;
         // open file
         std::ifstream file(filename);
         if (!file) {
             throw(1);
         }
+        buffer << file.rdbuf();
+
+        file.close();
 
         int lines_count = 0;
         string line;
-        while (getline(file, line)) {
+        while (getline(buffer, line)) {
             lines_count++;
         }
-        
-        file.close();
-        file.open(filename);
-        
+
+        if (lines_count == 0) {
+            throw(3);
+        }
+
+        buffer.clear();
+        buffer.seekg(0, std::ios::beg);
+
         // read file header
         vector<string> header;
         header.reserve(4);
-        while (file.peek() != '\n') {
+        while (buffer.peek() != '\n') {
             string data;
-            file >> data;
+            buffer >> data;
             header.push_back(data);
         }
 
@@ -166,32 +174,34 @@ void read_data(vector<data>& arr, string filename) {
 
         arr.reserve(lines_count - 1);
         // read data
-        data temp;
         int i = 0;
-        while (!file.eof()) {
+        while (!buffer.eof()) {
             arr.push_back(data());
-            file >> arr[i].name >> arr[i].surname;
+            buffer >> arr[i].name >> arr[i].surname;
             for (int j = 0; j < homework_count; j++) {
                 arr[i].grades.push_back(int());
-                file >> arr[i].grades[j];
+                buffer >> arr[i].grades[j];
             }
-            file >> arr[i].exam;
+            buffer >> arr[i].exam;
             if (i > lines_count) {
                 throw(2);
             }
             i++;
         }
-        // close file
-        file.close();
 
-    } catch (int err) {
+    }
+    catch (int err) {
         switch (err) {
-        case 1: 
+        case 1:
             cout << "Failas neegzistuoja" << endl;
             break;
         case 2:
             arr.clear();
             cout << "Faile yra klaida" << endl;
+            break;
+        case 3:
+            cout << "Failas yra tuscias" << endl;
+            break;
         }
     }
 }

@@ -93,12 +93,21 @@ Studentai yra surūšiuoti abėcėlės tvarka
 * Studentų padalinimas į du failus pagal galutinį balą:
     * *vargsiukai.txt* - jei galutinis balas mažesnis nei 5
     * *kietiakiai.txt* - jei galutinis balas didesnis arba lygus 5
+* Sukurti du nauji *.cpp failai:
+    * **main_functions.cpp**  
+        funkcijos, kurios vykdo programą atsižvelgiant į vartotojo pasirinkimą
+    * **output.cpp**  
+        funkcijos, skirtos duomenų išvedimui
 
 ### Programos spartos analizė
 | Įrašų kiekis | Failo generavimas, s | Duomenų nuskaitymas, s | Studentų rūšiavimas į dvi kategorijas, s | Studentų išvedimas į du naujus failus, s | Programos veikimo laikas, s |
 |---|---|---|---|---|---|
-| 1,000 | 0.01898 | 0.013995 | 0 | 0.011967 | 0.049866 |
-| 10,000 | 0.103756 | 0.089185 | 0.000984 | 0.033913 | 0.235321 |
-| 100,000 | 1.01728 | 0.836744 | 0.010006 | 0.323137 | 2.20845 |
-| 1,000,000 | 10.0511 | 7.81611 | 0.102726 | 3.29519 | 21.4242 |
-| 10,000,000 | 100.792 | 45.3273 | 0.581448 | 5.24896 | 152.8 |
+| 1,000 | 0.0044582 | 0.0163945 | 0.0000953 | 0.008008 | 0.0269248 |
+| 10,000 | 0.0450716 | 0.0588467 | 0.0009997 | 0.0562167 | 0.120584 |
+| 100,000 | 0.459894 | 0.657257 | 0.0136894 | 0.620062 | 1.3167 |
+| 1,000,000 | 4.07149 | 5.51457 | 0.0934117 | 4.57925 | 10.3437 |
+| 10,000,000 | 39.8864 | 52.8285 | 0.98868 | 42.3614 | 97.6938 |
+
+*\* Programos testvaimas buvo atliktas naudojant Visual Studio 2019 v16.11.7. Testavimui buvo naudojama projekto Release versija.  
+Naudota sistema: i5-8300h, 16gb 2667 MHz CL19*  
+*\* Programos veikimo laikas buvo pradėtas skaičiuoti sugeneravus duomenų failą*
