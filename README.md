@@ -110,4 +110,5 @@ Studentai yra surūšiuoti abėcėlės tvarka
 
 *\* Programos testvaimas buvo atliktas naudojant Visual Studio 2019 v16.11.7. Testavimui buvo naudojama projekto Release versija.  
 Naudota sistema: i5-8300h, 16gb 2667 MHz CL19*  
-*\* Programos veikimo laikas buvo pradėtas skaičiuoti sugeneravus duomenų failą*
+*\* Programos veikimo laikas buvo pradėtas skaičiuoti sugeneravus duomenų failą*  
+*\* Testuojant buvo generuojama 10 namų darbų pažymių*
