@@ -102,13 +102,14 @@ Studentai yra surūšiuoti abėcėlės tvarka
 ### Programos spartos analizė
 | Įrašų kiekis | Failo generavimas, s | Duomenų nuskaitymas, s | Studentų rūšiavimas į dvi kategorijas, s | Studentų išvedimas į du naujus failus, s | Programos veikimo laikas, s |
 |---|---|---|---|---|---|
-| 1,000 | 0.0044582 | 0.0163945 | 0.0000953 | 0.008008 | 0.0269248 |
-| 10,000 | 0.0450716 | 0.0588467 | 0.0009997 | 0.0562167 | 0.120584 |
-| 100,000 | 0.459894 | 0.657257 | 0.0136894 | 0.620062 | 1.3167 |
-| 1,000,000 | 4.07149 | 5.51457 | 0.0934117 | 4.57925 | 10.3437 |
-| 10,000,000 | 39.8864 | 52.8285 | 0.98868 | 42.3614 | 97.6938 |
+| 1,000 | 0.0018 | 0.0141 | 0 | 0.0025 | 0.0198 |
+| 10,000 | 0.0104 | 0.0418 | 0.001 | 0.0126 | 0.0607 |
+| 100,000 | 0.0965 | 0.3447 | 0.0095 | 0.1121 | 0.4855 |
+| 1,000,000 | 0.9242 | 3.4384 | 0.0857 | 1.0876 | 4.7643 |
+| 10,000,000 | 10.1074 | 34.0514 | 0.8886 | 10.2287 | 46.6012 |
 
-*\* Programos testvaimas buvo atliktas naudojant Visual Studio 2019 v16.11.7. Testavimui buvo naudojama projekto Release versija.  
-Naudota sistema: i5-8300h, 16gb 2667 MHz CL19*  
+*\* Programos testvaimas buvo atliktas naudojant g++ kompiliatorių (gcc version 8.1.0, x86_64-posix-seh-rev0)*  
+*\* Rezultatai buvo apskaičiuoti naudojant 3 bandymų vidurkį*  
+*\* Naudota sistema: i5-8300h, 16gb 2667 MHz CL19, Micron 1100 M.2 SATA 6Gb/s*  
 *\* Programos veikimo laikas buvo pradėtas skaičiuoti sugeneravus duomenų failą*  
 *\* Testuojant buvo generuojama 10 namų darbų pažymių*
