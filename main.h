@@ -29,4 +29,5 @@ struct data {
     string name, surname;
     int exam;
     vector<int> grades;
+    double final;
 };

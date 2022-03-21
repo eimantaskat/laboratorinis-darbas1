@@ -68,7 +68,8 @@ void split(vector<data> arr, double (*func)(vector<int>)) {
     // calculate final grade and split students
     vector<int> vargsiukai, kietiakai;
     for(int i = 0; i < arr.size(); i++) {
-        if (0.4 * func(arr[i].grades) + 0.6 * arr[i].exam < 5)
+        arr[i].final = 0.4 * func(arr[i].grades) + 0.6 * arr[i].exam;
+        if (arr[i].final < 5)
             vargsiukai.push_back(i);
         else
             kietiakai.push_back(i);

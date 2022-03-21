@@ -5,19 +5,11 @@ void write_students(string filename, vector<data> arr, vector<int> indexes) {
     std::ofstream file (filename);
 
     // write header line
-    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
-    for (int i = 0; i < arr[0].grades.size(); i++) {
-        file << std::right << setw(5) << "ND" + std::to_string(i+1);
-    }
-    file << setw(5) << "Egz." << endl;
+    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20) << "Galutinis balas" << endl;
 
     std::stringstream line;
     for(auto i:indexes) {
-        line << left << setw(20) << arr[i].name << setw(20) << arr[i].surname;
-        for(int j = 0; j < arr[i].grades.size(); j++) {
-            line << std::right << setw(5) << arr[i].grades[j];
-        }
-        line << std::right << setw(5) << arr[i].exam << endl;
+        line << left << setw(20) << arr[i].name << setw(20) << arr[i].surname << setw(20) << arr[i].final << '\n';
         if (i % 1000 == 0) {
             file << line.rdbuf();
             line.clear();

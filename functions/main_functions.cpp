@@ -137,14 +137,12 @@ void student_sorting() {
         //     }
         // }
 
-        std::chrono::_V2::system_clock::time_point pause, cont;
+        auto pause = std::chrono::high_resolution_clock::now();
+        auto cont = std::chrono::high_resolution_clock::now();
         if (arr.size() > 0) {
-
-            pause = std::chrono::high_resolution_clock::now();
             // ask user how to calculate final grade
             cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
             string select;
-            cont = std::chrono::high_resolution_clock::now();
 
             while (true) {
                 cin >> select;
@@ -152,6 +150,7 @@ void student_sorting() {
                 if(!check_select(select)) {
                     cout << "Iveskite 1 arba 2" << endl;
                 } else {
+                    cont = std::chrono::high_resolution_clock::now();
                     int s = stoi(select);
                     switch (s) {
                     case 1:
@@ -166,9 +165,9 @@ void student_sorting() {
                 }
             }
             auto stop = std::chrono::high_resolution_clock::now();
-            auto full_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-            auto waiting_for_user = std::chrono::duration_cast<std::chrono::nanoseconds>(pause - cont);
-            auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(full_duration - waiting_for_user);
+            auto duration1 = std::chrono::duration_cast<std::chrono::nanoseconds>(pause - start);
+            auto duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - cont);
+            auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(duration1 + duration2);
             cout << "Programos veikimo laikas: " << duration.count() * 1e-9 << "\n";
             break;
         }
