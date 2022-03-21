@@ -74,7 +74,7 @@ void split(vector<data> arr, double (*func)(vector<int>)) {
     }
     
     write_students("kietiakai.txt", arr, kietiakai);
-    write_students("vargsiukai.txt", arr, kietiakai);
+    write_students("vargsiukai.txt", arr, vargsiukai);
 
     cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
