@@ -64,6 +64,7 @@ void generate(int n, int nd) {
 }
 
 void split(vector<data> arr, double (*func)(vector<int>)) {
+    auto start = std::chrono::high_resolution_clock::now();
     // calculate final grade and split students
     vector<int> vargsiukai, kietiakai;
     for(int i = 0; i < arr.size(); i++) {
@@ -72,9 +73,15 @@ void split(vector<data> arr, double (*func)(vector<int>)) {
         else
             kietiakai.push_back(i);
     }
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+    cout << "Studentu skirstymas i vargsiukus ir kietiakus uztruko: " << duration.count() * 1e-9 << "s\n";
     
+    start = std::chrono::high_resolution_clock::now();
     write_students("kietiakai.txt", arr, kietiakai);
     write_students("vargsiukai.txt", arr, vargsiukai);
-
-    cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+    cout << "Vargsiuku ir kietiaku rasymas i failus uztruko: " << duration.count() * 1e-9 << "s\n";
+    // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }

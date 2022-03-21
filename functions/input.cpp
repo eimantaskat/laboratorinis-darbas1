@@ -136,6 +136,7 @@ void input_data(vector<data>& arr) {
 // function to read data from file
 void read_data(vector<data>& arr, string filename) {
     try {
+        auto start = std::chrono::high_resolution_clock::now();
         std::stringstream buffer;
         // open file
         std::ifstream file(filename);
@@ -145,7 +146,11 @@ void read_data(vector<data>& arr, string filename) {
         buffer << file.rdbuf();
 
         file.close();
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Failo skaitymas uztruko: " << duration.count() * 1e-9 << "s\n";
 
+        start = std::chrono::high_resolution_clock::now();
         int lines_count = 0;
         string line;
         while (getline(buffer, line)) {
@@ -188,7 +193,9 @@ void read_data(vector<data>& arr, string filename) {
             }
             i++;
         }
-
+        stop = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Duomenu paruosimas programos naudojimui uztruko: " << duration.count() * 1e-9 << "s\n";
     }
     catch (int err) {
         switch (err) {

@@ -89,7 +89,11 @@ void data_generation() {
         }
     }
     try {
+        auto start = std::chrono::high_resolution_clock::now();
         generate(n, nd);
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Failo generavimas uztruko: " << duration.count() * 1e-9 << "s\n";
         cout << "Rezultatas issaugotas faile " << std::to_string(n) + "st_" + std::to_string(nd) + "nd.txt\n";
     } catch(...) {
         cout << "Ivyko klaida\n";
@@ -103,39 +107,44 @@ void student_sorting() {
         cout << "Iveskite failo pavadinima su pletiniu: ";
         string filename;
         cin >> filename;
-
+        auto start = std::chrono::high_resolution_clock::now();
         read_data(arr, filename);
 
-        cout << "Pagal ka norite rusiuoti studentus?\n1. Varda\n2. Pavarde\n";
+        // cout << "Pagal ka norite rusiuoti studentus?\n1. Varda\n2. Pavarde\n";
 
-        while (true) {
-            string select;
-            cin >> select;
-            if(!check_select(select)) {
-                cout << "Iveskite 1 arba 2" << endl;
-            } else {
-                int s = stoi(select);
+        // while (true) {
+        //     string select;
+        //     cin >> select;
+        //     if(!check_select(select)) {
+        //         cout << "Iveskite 1 arba 2" << endl;
+        //     } else {
+        //         int s = stoi(select);
                 
-                // quick_sort(arr, 0, arr.size()-1);
-                switch (s) {
-                case 1:
-                    std::sort(arr.begin(), arr.end(), compareByName);
-                    break;
+        //         auto start = std::chrono::high_resolution_clock::now();
+        //         switch (s) {
+        //         case 1:
+        //             std::sort(arr.begin(), arr.end(), compareByName);
+        //             break;
                 
-                case 2:
-                    std::sort(arr.begin(), arr.end(), compareBySurname);
-                    break;
-                }
-                break;
-            }
-        }
+        //         case 2:
+        //             std::sort(arr.begin(), arr.end(), compareBySurname);
+        //             break;
+        //         }
+        //         auto stop = std::chrono::high_resolution_clock::now();
+        //         auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        //         cout << "Studentu rusiavimas pagal vardus uztruko: " << duration.count() * 1e-9 << " \n";
+        //         break;
+        //     }
+        // }
 
-
+        std::chrono::_V2::system_clock::time_point pause, cont;
         if (arr.size() > 0) {
 
+            pause = std::chrono::high_resolution_clock::now();
             // ask user how to calculate final grade
             cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
             string select;
+            cont = std::chrono::high_resolution_clock::now();
 
             while (true) {
                 cin >> select;
@@ -156,7 +165,13 @@ void student_sorting() {
                     break;
                 }
             }
+            auto stop = std::chrono::high_resolution_clock::now();
+            auto full_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+            auto waiting_for_user = std::chrono::duration_cast<std::chrono::nanoseconds>(pause - cont);
+            auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(full_duration - waiting_for_user);
+            cout << "Programos veikimo laikas: " << duration.count() * 1e-9 << "\n";
             break;
         }
+
     }
 }

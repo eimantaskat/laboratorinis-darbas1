@@ -3,4 +3,4 @@ main:
 run:
 	g++ -o main main.cpp functions/*.cpp -O3; ./main
 clean:
-	rm *.exe
+	rm *.exe *.txt

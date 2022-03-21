@@ -3,7 +3,7 @@
 int main() {
     // input data
     string select;
-    cout << "Ka norite daryti?\n1 - ivesti duomeis\n2 - sugeneruoti duomenis\n3 - surusioti studentus\n";
+    cout << "Ka norite daryti?\n1 - ivesti duomeis\n2 - sugeneruoti duomenis\n3 - surusioti studentus i vargsiukus ir kietiakus\n";
 
     while (true) {
         cin >> select;
