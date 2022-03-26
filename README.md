@@ -113,3 +113,50 @@ Studentai yra surūšiuoti abėcėlės tvarka
 *\* Naudota sistema: i5-8300h, 16gb 2667 MHz CL19, Micron 1100 M.2 SATA 6Gb/s*  
 *\* Programos veikimo laikas buvo pradėtas skaičiuoti sugeneravus duomenų failą*  
 *\* Testuojant buvo generuojama 10 namų darbų pažymių*
+
+# ***v0.5***
+* Programa realizuota panaudojant *std::list* ir *std::deque* konteinerius
+
+* Sukurtos naujos direktorijos:
+    * **list_functions**  
+        failai su funkcijomis, naudojančiomis *std::list* konteinerį
+    * **deque_functions**  
+        failai su funkcijomis, naudojančiomis *std::deque* konteinerį
+
+### Programos spartos analizė
+### ***std::vector***
+| Įrašų kiekis | Duomenų nuskaitymas, s | Duomenų paruošimas naudojimui programoje, s | Studentų rūšiavimas į dvi kategorijas, s | Studentų išvedimas į du naujus failus, s | Programos veikimo laikas, s |
+|---|---|---|---|---|---|
+| 1,000 | 0 | 0 | 0 | 0.003991 | 0.007988 |
+| 10,000 | 0.015621 | 0.015651 | 0.002032 | 0.024875 | 0.062536 |
+| 100,000 | 0.074806 | 0.174583 | 0.008974 | 0.132533 | 0.413317 |
+| 1,000,000 | 0.714639 | 1.76577 | 0.084773 | 1.20961 | 3.90779 |
+| 10,000,000 | 7.10166 | 17.4659 | 0.874824 | 11.4619 | 38.396 |
+
+
+
+### ***std::list***
+| Įrašų kiekis | Duomenų nuskaitymas, s | Duomenų paruošimas naudojimui programoje, s | Studentų rūšiavimas į dvi kategorijas, s | Studentų išvedimas į du naujus failus, s | Programos veikimo laikas, s |
+|---|---|---|---|---|---|
+| 1,000 | 0 | 0.017723 | 0 | 0 | 0.033275 |
+| 10,000 | 0.015583 | 0.015621 | 0 | 0.031199 | 0.062403 |
+| 100,000 | 0.078038 | 0.187708 | 0.015621 | 0.161496 | 0.474089 |
+| 1,000,000 | 0.741159 | 1.91418 | 0.17187 | 1.56129 | 4.68564 |
+| 10,000,000 | 7.15479 | 19.1396 | 1.60161 | 16.0839 | 47.219 |
+
+### ***std::deque***
+
+| Įrašų kiekis | Duomenų nuskaitymas, s | Duomenų paruošimas naudojimui programoje, s | Studentų rūšiavimas į dvi kategorijas, s | Studentų išvedimas į du naujus failus, s | Programos veikimo laikas, s |
+|---|---|---|---|---|---|
+| 1,000 | 0 | 0.015581 | 0 | 0.007142 | 0.023742 |
+| 10,000 | 0.015611 | 0.015587 | 0 | 0.015620 | 0.046818 |
+| 100,000 | 0.0779954 | 0.187456 | 0.015651 | 0.140561 | 0.452874 |
+| 1,000,000 | 0.703468 | 1.8448 | 0.109346 | 1.35773 | 4.25 |
+| 10,000,000 | 7.09527 | 18.5 | 1.04699 | 13.4185 | 42.4078 |
+
+*\* Naudota sistema: i5-8300h, 16gb 2667 MHz CL19, Samsung 970 Evo Plus NVMe SSD*  
+*\* Programos testvaimas buvo atliktas naudojant g++ kompiliatorių (gcc version 8.1.0, x86_64-posix-seh-rev0)*  
+*\* Naudotuose failuose buvo 10 namų darbų pažymių*  
+*\* Galutinis failas buvo skaičiuojant naudojant vidurkį*
+
+![1,000 įrašų](http:/eimantas.ddns.net/images/op-charts/1000.png)
