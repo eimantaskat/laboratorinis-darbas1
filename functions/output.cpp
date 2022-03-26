@@ -1,21 +1,20 @@
 #include "../functions.h"
 
 
-void write_students(string filename, vector<data> arr, vector<int> indexes) {
+void write_students(string filename, vector<data> arr, vector<vector<data>::iterator> ptr) {
+    // write student name, surname and final grade to stringstream
+    std::stringstream line;
+    for(auto student:ptr)
+        line << left << setw(20) << student->name << setw(20) << student->surname << setw(20) << student->final << '\n';
+    
     std::ofstream file (filename);
 
     // write header line
     file << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20) << "Galutinis balas" << endl;
 
-    std::stringstream line;
-    for(auto i:indexes) {
-        line << left << setw(20) << arr[i].name << setw(20) << arr[i].surname << setw(20) << arr[i].final << '\n';
-        if (i % 1000 == 0) {
-            file << line.rdbuf();
-            line.clear();
-        }
-    }
+    // write stringstream to file
     file << line.rdbuf();
+
     file.close();
 
 }

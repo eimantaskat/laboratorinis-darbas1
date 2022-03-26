@@ -20,6 +20,6 @@ bool compareByName(const data&, const data&);
 bool compareBySurname(const data&, const data&);
 bool is_int(string);
 void data_input();
-void write_students(string, vector<data>, vector<int>);
+void write_students(string, vector<data>, vector<vector<data>::iterator>);
 void data_generation();
 void student_sorting();

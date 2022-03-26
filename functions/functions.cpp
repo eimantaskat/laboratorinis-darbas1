@@ -66,13 +66,14 @@ void generate(int n, int nd) {
 void split(vector<data> arr, double (*func)(vector<int>)) {
     auto start = std::chrono::high_resolution_clock::now();
     // calculate final grade and split students
-    vector<int> vargsiukai, kietiakai;
-    for(int i = 0; i < arr.size(); i++) {
-        arr[i].final = 0.4 * func(arr[i].grades) + 0.6 * arr[i].exam;
-        if (arr[i].final < 5)
-            vargsiukai.push_back(i);
+    vector<vector<data>::iterator> vargsiukai, kietiakai;
+    for(auto ptr = arr.begin(); ptr < arr.end(); ptr++) {
+        ptr->final = 0.4 * func(ptr->grades) + 0.6 * ptr->exam;
+        if (ptr->final < 5)
+            vargsiukai.push_back(ptr);
         else
-            kietiakai.push_back(i);
+            kietiakai.push_back(ptr);
+
     }
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
