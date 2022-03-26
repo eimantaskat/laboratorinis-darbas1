@@ -159,4 +159,8 @@ Studentai yra surūšiuoti abėcėlės tvarka
 *\* Naudotuose failuose buvo 10 namų darbų pažymių*  
 *\* Galutinis failas buvo skaičiuojant naudojant vidurkį*
 
-![1,000 įrašų](http:/eimantas.ddns.net/images/op-charts/1000.png)
+![1000](https://user-images.githubusercontent.com/80033246/160245264-68ad7944-1cb8-4ca0-a89c-8fbde76f40ac.png)
+![10,000](https://user-images.githubusercontent.com/80033246/160245258-f52120a8-19c8-4bff-8a61-0e6f4358d46f.png)
+![100,000](https://user-images.githubusercontent.com/80033246/160245263-8a0d593e-52ec-43c2-907e-e0d76366e439.png)
+![1,000,000](https://user-images.githubusercontent.com/80033246/160245265-a426a7d0-85de-407e-b7ad-e144727c2e53.png)
+![10,000,000](https://user-images.githubusercontent.com/80033246/160245266-db5fb69d-7c24-4ae8-840b-b0254bc843af.png)
