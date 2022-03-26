@@ -34,7 +34,10 @@ int main() {
                     break;
                 case 2:
                     list_data_input();
-                    break;    
+                    break;
+                case 3:
+                    deque_data_input();
+                    break;  
             }
             break;
         
@@ -49,6 +52,10 @@ int main() {
                     break;
                 case 2:
                     list_student_sorting();
+                    break;
+                case 3:
+                    deque_student_sorting();
+                    break;
             }
             break;
         }

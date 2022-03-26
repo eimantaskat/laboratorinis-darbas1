@@ -13,6 +13,7 @@
 #include <sstream>
 #include <vector>
 #include <list>
+#include <deque>
 
 using std::string;
 using std::cout;
@@ -24,6 +25,7 @@ using std::accumulate;
 using std::setprecision;
 using std::vector;
 using std::list;
+using std::deque;
 
 using hrClock = std::chrono::high_resolution_clock;
 
