@@ -1,42 +1,7 @@
 #include "../functions.h"
 
-void data_generation() {
-    int n, nd;
-    string input;
-    cout << "Kiek studentu duomenu norite sugeneruoti?\n";
-    while (true) {
-        cin >> input;
-        if(is_int(input)) {
-            n = stoi(input);
-            break;
-        } else {
-            cout << "Iveskite sveikaji skaiciu\n";
-        }
-    }
-    cout << "Kiek namu darbu pazymiu norite sugeneruoti?\n";
-    while (true) {
-        cin >> input;
-        if(is_int(input)) {
-                nd = stoi(input);
-                break;
-        } else {
-            cout << "Iveskite sveikaji skaiciu\n";
-        }
-    }
-    try {
-        auto start = std::chrono::high_resolution_clock::now();
-        generate(n, nd);
-        auto stop = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        cout << "Failo generavimas uztruko: " << duration.count() * 1e-9 << "s\n";
-        cout << "Rezultatas issaugotas faile " << std::to_string(n) + "st_" + std::to_string(nd) + "nd.txt\n";
-    } catch(...) {
-        cout << "Ivyko klaida\n";
-    }
-}
-
-void vector_data_input() {
-    vector<data> arr;
+void list_data_input() {
+    list<data> arr;
     string from_file, select;
     cout << "Ar norite nuskaityti duomenis is failo? (y/n): ";
     cin >> from_file;
@@ -61,13 +26,13 @@ void vector_data_input() {
                         
                         // quick_sort(arr, 0, arr.size()-1);
                         switch (s) {
-                        case 1:
-                            std::sort(arr.begin(), arr.end(), compareByName);
-                            break;
-                        
-                        case 2:
-                            std::sort(arr.begin(), arr.end(), compareBySurname);
-                            break;
+                            case 1:
+                                arr.sort(compareByName);
+                                break;
+                            
+                            case 2:
+                                arr.sort(compareBySurname);
+                                break;
                         }
                         
                         print(arr, 3);
@@ -100,8 +65,8 @@ void vector_data_input() {
     }
 }
 
-void vector_student_sorting() {
-    vector<data> arr;
+void list_student_sorting() {
+    list<data> arr;
     while (true) {
         // read from file
         cout << "Iveskite failo pavadinima su pletiniu: ";

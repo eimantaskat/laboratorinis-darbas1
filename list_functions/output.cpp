@@ -1,25 +1,7 @@
 #include "../functions.h"
 
-
-void write_students(string filename, vector<data> arr, vector<vector<data>::iterator> ptr) {
-    // write student name, surname and final grade to stringstream
-    std::stringstream line;
-    for(auto student:ptr)
-        line << left << setw(20) << student->name << setw(20) << student->surname << setw(20) << student->final << '\n';
-    
-    std::ofstream file (filename);
-
-    // write header line
-    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20) << "Galutinis balas" << endl;
-
-    // write stringstream to file
-    file << line.rdbuf();
-
-    file.close();
-}
-
 // function to print results
-void print(vector<data> arr, int s) {
+void print(list<data> arr, int s) {
     // print header line
     cout << endl;
     cout << left << setw(15) << "Vardas" 
@@ -57,4 +39,22 @@ void print(vector<data> arr, int s) {
                     break;
             }
     }
+}
+
+void write_students(string filename, list<data> arr, list<list<data>::iterator> ptr) {
+    // write student name, surname and final grade to stringstream
+    std::stringstream line;
+    for(auto student:ptr)
+        line << left << setw(20) << student->name << setw(20) << student->surname << setw(20) << student->final << '\n';
+    
+    std::ofstream file (filename);
+
+    // write header line
+    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20) << "Galutinis balas" << endl;
+
+    // write stringstream to file
+    file << line.rdbuf();
+
+    file.close();
+
 }

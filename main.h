@@ -5,13 +5,14 @@
 #include <numeric>
 #include <string>
 #include <regex>
-#include <vector>
 #include <random>
 #include <ctime>
 #include <fstream>
 #include <algorithm>
 #include <chrono>
 #include <sstream>
+#include <vector>
+#include <list>
 
 using std::string;
 using std::cout;
@@ -22,6 +23,7 @@ using std::left;
 using std::accumulate;
 using std::setprecision;
 using std::vector;
+using std::list;
 
 using hrClock = std::chrono::high_resolution_clock;
 
