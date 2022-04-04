@@ -1,11 +1,11 @@
 #include "../functions.h"
 
 
-void write_students(string filename, vector<data> arr, vector<vector<data>::iterator> ptr) {
+void write_students(string filename, vector<data> arr) {
     // write student name, surname and final grade to stringstream
     std::stringstream line;
-    for(auto student:ptr)
-        line << left << setw(20) << student->name << setw(20) << student->surname << setw(20) << student->final << '\n';
+    for(auto student:arr)
+        line << left << setw(20) << student.name << setw(20) << student.surname << setw(20) << student.final << '\n';
     
     std::ofstream file (filename);
 

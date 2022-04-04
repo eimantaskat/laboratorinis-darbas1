@@ -41,11 +41,11 @@ void print(list<data> arr, int s) {
     }
 }
 
-void write_students(string filename, list<data> arr, list<list<data>::iterator> ptr) {
+void write_students(string filename, list<data> arr) {
     // write student name, surname and final grade to stringstream
     std::stringstream line;
-    for(auto student:ptr)
-        line << left << setw(20) << student->name << setw(20) << student->surname << setw(20) << student->final << '\n';
+    for(auto student:arr)
+        line << left << setw(20) << student.name << setw(20) << student.surname << setw(20) << student.final << '\n';
     
     std::ofstream file (filename);
 

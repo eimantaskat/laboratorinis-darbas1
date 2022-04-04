@@ -48,6 +48,6 @@ void read_data(vector<data>& arr, string filename);
 void read_data(list<data>& arr, string filename);
 void read_data(deque<data>& arr, string filename);
 
-void write_students(string, vector<data>, vector<vector<data>::iterator>);
-void write_students(string, list<data>, list<list<data>::iterator>);
-void write_students(string, deque<data>, deque<deque<data>::iterator>);
+void write_students(string, vector<data>);
+void write_students(string, list<data>);
+void write_students(string, deque<data>);
