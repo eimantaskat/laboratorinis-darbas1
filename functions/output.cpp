@@ -1,7 +1,7 @@
 #include "../functions.h"
 
 
-void write_students(string filename, vector<data> arr) {
+void write_students(const string filename, const vector<data> arr) {
     // write student name, surname and final grade to stringstream
     std::stringstream line;
     for(auto student:arr)
@@ -19,7 +19,7 @@ void write_students(string filename, vector<data> arr) {
 }
 
 // function to print results
-void print(vector<data> arr, int s) {
+void print(const vector<data> arr, const int s) {
     // print header line
     cout << endl;
     cout << left << setw(15) << "Vardas" 

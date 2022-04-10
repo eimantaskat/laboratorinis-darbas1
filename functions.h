@@ -36,18 +36,21 @@ void input_data(vector<data>& arr);
 void input_data(list<data>& arr);
 void input_data(deque<data>& arr);
 
-void print(vector<data> arr, int s);
-void print(list<data> arr, int s);
-void print(deque<data> arr, int s);
+void print(const vector<data> arr, const int s);
+void print(const list<data> arr, const int s);
+void print(const deque<data> arr, const int s);
 
-void split(vector<data> arr, double (*func)(vector<int>));
-void split(list<data> arr, double (*func)(vector<int>));
-void split(deque<data> arr, double (*func)(vector<int>));
+void split_two_new(vector<data> arr, double (*func)(vector<int>));
+void split_one_new(vector<data> arr, double (*func)(vector<int>));
+void split_two_new(list<data> arr, double (*func)(vector<int>));
+void split_one_new(list<data> arr, double (*func)(vector<int>));
+void split_two_new(deque<data> arr, double (*func)(vector<int>));
+void split_one_new(deque<data> arr, double (*func)(vector<int>));
 
 void read_data(vector<data>& arr, string filename);
 void read_data(list<data>& arr, string filename);
 void read_data(deque<data>& arr, string filename);
 
-void write_students(string, vector<data>);
-void write_students(string, list<data>);
-void write_students(string, deque<data>);
+void write_students(const string, const vector<data>);
+void write_students(const string, const list<data>);
+void write_students(const string, const deque<data>);

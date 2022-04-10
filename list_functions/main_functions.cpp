@@ -68,6 +68,16 @@ void list_data_input() {
 void list_student_sorting() {
     list<data> arr;
     while (true) {
+        cout << "Kaip norite rusioti studentus?\n1. I du naujus konteinerius\n2. I viena nauja konteineri\n";
+        string select;
+        while (true) {
+            cin >> select;
+
+            if(!check_select(select)) 
+                cout << "Iveskite 1 arba 2" << endl;
+            else 
+                break;
+        }
         // read from file
         cout << "Iveskite failo pavadinima su pletiniu: ";
         string filename;
@@ -86,30 +96,18 @@ void list_student_sorting() {
         auto pause = std::chrono::high_resolution_clock::now();
         auto cont = std::chrono::high_resolution_clock::now();
         if (arr.size() > 0) {
-            // ask user how to calculate final grade
-            // cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
-            string select = "1";
-
-            while (true) {
-                // cin >> select;
-
-                if(!check_select(select)) {
-                    cout << "Iveskite 1 arba 2" << endl;
-                } else {
-                    cont = std::chrono::high_resolution_clock::now();
-                    int s = stoi(select);
-                    switch (s) {
-                    case 1:
-                        split(arr, &average);
-                        break;
-                    
-                    case 2:
-                        split(arr, &median);
-                        break;
-                    }
+                cont = std::chrono::high_resolution_clock::now();
+                int s = stoi(select);
+                switch (s) {
+                case 1:
+                    split_two_new(arr, &average);
+                    break;
+                
+                case 2:
+                    split_one_new(arr, &median);
                     break;
                 }
-            }
+                
             auto stop = std::chrono::high_resolution_clock::now();
             auto duration1 = std::chrono::duration_cast<std::chrono::nanoseconds>(pause - start);
             auto duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - cont);

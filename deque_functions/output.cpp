@@ -1,7 +1,7 @@
 #include "../functions.h"
 
 // function to print results
-void print(deque<data> arr, int s) {
+void print(const deque<data> arr, const int s) {
     // print header line
     cout << endl;
     cout << left << setw(15) << "Vardas" 
@@ -41,7 +41,7 @@ void print(deque<data> arr, int s) {
     }
 }
 
-void write_students(string filename, deque<data> arr) {
+void write_students(const string filename, const deque<data> arr) {
     // write student name, surname and final grade to stringstream
     std::stringstream line;
     for(auto student:arr)
