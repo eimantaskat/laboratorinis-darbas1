@@ -38,7 +38,9 @@ void split_one_new(deque<data> kietiakai, double (*func)(vector<int>)) {
         it->final = 0.4 * func(it->grades) + 0.6 * it->exam;
         if (it->final < 5) {
             vargsiukai.push_back(*it);
-            it = kietiakai.erase(it);
+            // it = kietiakai.erase(it);
+            std::iter_swap(it, kietiakai.end() - 1);
+            kietiakai.pop_back();
         } else
             it++;
     }

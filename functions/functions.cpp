@@ -100,11 +100,12 @@ void split_one_new(vector<data> kietiakai, double (*func)(vector<int>)) {
         it->final = 0.4 * func(it->grades) + 0.6 * it->exam;
         if (it->final < 5) {
             vargsiukai.push_back(*it);
-            it = kietiakai.erase(it);
+            // it = kietiakai.erase(it);
+            std::iter_swap(it, kietiakai.end() - 1);
+            kietiakai.pop_back();
         } else
             it++;
     }
-
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     cout << "Studentu skirstymas i vargsiukus ir kietiakus uztruko: " << duration.count() * 1e-9 << "s\n";
