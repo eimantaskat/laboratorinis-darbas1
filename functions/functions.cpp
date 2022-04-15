@@ -91,21 +91,30 @@ void split_two_new(vector<data> arr, double (*func)(vector<int>)) {
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
 
+bool f(data &stud) {
+    stud.final = 0.4 * average(stud.grades) + 0.6 * stud.exam;
+    return stud.final < 5;
+}
+bool f1(data stud) {
+    return stud.final > 5;
+}
+
 void split_one_new(vector<data> kietiakai, double (*func)(vector<int>)) {
     auto start = std::chrono::high_resolution_clock::now();
-    // calculate final grade and split students
-    vector<data> vargsiukai;
-    auto it = kietiakai.begin();
+    
+    std::stable_partition(kietiakai.begin(), kietiakai.end(), f);
+    auto it = std::find_if(kietiakai.begin(), kietiakai.end(), f1);
+    vector<data> vargsiukai(kietiakai.begin(), it);
+    
+    it = kietiakai.begin();
     while(it != kietiakai.end()) {
-        it->final = 0.4 * func(it->grades) + 0.6 * it->exam;
         if (it->final < 5) {
-            vargsiukai.push_back(*it);
-            // it = kietiakai.erase(it);
             std::iter_swap(it, kietiakai.end() - 1);
             kietiakai.pop_back();
         } else
             it++;
     }
+
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     cout << "Studentu skirstymas i vargsiukus ir kietiakus uztruko: " << duration.count() * 1e-9 << "s\n";
