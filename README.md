@@ -1,4 +1,27 @@
 # laboratorinis-darbas
+
+## Įdiegimo instrukcija
+1. Atsisiųskite programos kodą paspaudę [čia]("https://github.com/eimantaskat/laboratorinis-darbas/archive/refs/heads/main.zip") arba su komanda
+```console
+$ git clone https://github.com/eimantaskat/laboratorinis-darbas.git
+```
+2. Sukompiliuokite programą
+```console
+$ make
+```
+3. Paleiskite programos **.exe* failą
+
+## Naudojimosi instrukcija
+1. Palieskite programą paspaudę ant ***pavadinimas**.exe* failo arbą per komandinę eilutę
+``` console
+$ ./pavadinimas
+```
+arba
+```
+$ pavadinimas.exe
+```
+2. Sekite instrukcijas ekrane
+
 # ***v0.1***
 Faile ***array.cpp*** programa sukurta naudojant *C masyvą*, faile ***vector.cpp*** naudojant *std::vector* tipo konteinerį
 
@@ -211,3 +234,18 @@ Studentai yra surūšiuoti abėcėlės tvarka
 ![std::vector, 10,000,000](https://user-images.githubusercontent.com/80033246/163351482-f5e00c05-c123-4269-b14b-35688f746115.png)
 ![std::list, 10,000,000](https://user-images.githubusercontent.com/80033246/163351632-a3ef6e9d-6f62-4f0e-9eb6-2dcfe01e89a7.png)
 ![std::deque, 10,000,000](https://user-images.githubusercontent.com/80033246/163351641-8a80f254-18e7-4d93-b55a-926dd60632c0.png)
+
+
+### Naudojami nauji algoritmai
+* *std::stable_partition*
+* *std::find_if*
+
+| Įrašų kiekis | Duomenų nuskaitymas, s | Duomenų paruošimas naudojimui programoje, s | Studentų rūšiavimas pagal vardus, s | Studentų rūšiavimas į dvi kategorijas, s | Studentų išvedimas į du naujus failus, s | Programos veikimo laikas, s |
+|---|---|---|---|---|---|---|
+| 1,000 | 0.0030003 | 0.0030017 | 0 | 0 | 0.0059955 | 0.0180172 |
+| 10,000 | 0.0110091 | 0.0199938 | 0.0039748 | 0.0029974 | 0.0180094 | 0.0642923 |
+| 100,000 | 0.0849858 | 0.184032 | 0.0440006 | 0.0300147 | 0.128 | 0.489988 |
+| 1,000,000 | 0.811014 | 1.82604 | 0.529997 | 0.26796 | 1.197 | 4.76364 |
+| 10,000,000 | 8.2256 | 17.886 | 6.54105 | 2.67504 | 11.752 | 48.2796 |
+
+![image](https://user-images.githubusercontent.com/80033246/163607585-7129adbf-1f37-477c-a155-ac2970484a73.png)
