@@ -10,11 +10,20 @@ void split_two_new(list<data> arr, double (*func)(vector<int>)) {
             vargsiukai.push_back(student);
         else
             kietiakai.push_back(student);
-
     }
+
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     cout << "Studentu skirstymas i vargsiukus ir kietiakus uztruko: " << duration.count() * 1e-9 << "s\n";
+
+    auto start5 = std::chrono::high_resolution_clock::now();
+
+    vargsiukai.sort(compareByName);
+    kietiakai.sort(compareByName);
+
+    auto stop5 = std::chrono::high_resolution_clock::now();
+    auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
+    cout << "Studentu rusiavimas pagal vardus uztruko: " << duration5.count() * 1e-9 << " \n";
     
     start = std::chrono::high_resolution_clock::now();
     write_students("kietiakai.txt", kietiakai);
@@ -46,6 +55,15 @@ void split_one_new(list<data> kietiakai, double (*func)(vector<int>)) {
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     cout << "Studentu skirstymas i vargsiukus ir kietiakus uztruko: " << duration.count() * 1e-9 << "s\n";
+
+    auto start5 = std::chrono::high_resolution_clock::now();
+
+    vargsiukai.sort(compareByName);
+    kietiakai.sort(compareByName);
+
+    auto stop5 = std::chrono::high_resolution_clock::now();
+    auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
+    cout << "Studentu rusiavimas pagal vardus uztruko: " << duration5.count() * 1e-9 << " \n";
     
     start = std::chrono::high_resolution_clock::now();
     write_students("kietiakai.txt", kietiakai);

@@ -108,50 +108,38 @@ void vector_student_sorting() {
         while (true) {
             cin >> select;
 
-            if(!check_select(select)) 
+            if (!check_select(select))
                 cout << "Iveskite 1 arba 2" << endl;
-            else 
+            else
                 break;
         }
-        // read from file
-        cout << "Iveskite failo pavadinima su pletiniu: ";
-        string filename;
-        cin >> filename;
-        auto start = std::chrono::high_resolution_clock::now();
-        read_data(arr, filename);
 
+        while (true) {
+            // read from file
+            cout << "Iveskite failo pavadinima su pletiniu: ";
+            string filename;
+            cin >> filename;
+            auto start = std::chrono::high_resolution_clock::now();
 
-        
-        auto start5 = std::chrono::high_resolution_clock::now();
+            read_data(arr, filename);
 
-        std::sort(arr.begin(), arr.end(), compareByName);
-
-        auto stop5 = std::chrono::high_resolution_clock::now();
-        auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
-        cout << "Studentu rusiavimas pagal vardus uztruko: " << duration5.count() * 1e-9 << " \n";
-
-        auto pause = std::chrono::high_resolution_clock::now();
-        auto cont = std::chrono::high_resolution_clock::now();
-        if (arr.size() > 0) {
-
-                cont = std::chrono::high_resolution_clock::now();
+            if (arr.size() > 0) {
                 int s = stoi(select);
                 switch (s) {
                 case 1:
                     split_two_new(arr, &average);
                     break;
-                
+
                 case 2:
                     split_one_new(arr, &median);
                     break;
+                }
+                auto stop = std::chrono::high_resolution_clock::now();
+                auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+                cout << "Programos veikimo laikas: " << duration.count() * 1e-9 << "\n";
+                break;
             }
-            auto stop = std::chrono::high_resolution_clock::now();
-            auto duration1 = std::chrono::duration_cast<std::chrono::nanoseconds>(pause - start);
-            auto duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - cont);
-            auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(duration1 + duration2);
-            cout << "Programos veikimo laikas: " << duration.count() * 1e-9 << "\n";
-            break;
         }
-
+        break;
     }
 }
