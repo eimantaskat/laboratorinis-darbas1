@@ -99,3 +99,20 @@ void read_data(vector<Student>& arr, string filename) {
         }
     }
 }
+
+void write_students(const string filename, const vector<Student> arr) {
+    // write student name, surname and final grade to stringstream
+    std::stringstream line;
+    for(auto student:arr)
+        line << std::left << std::setw(20) << student.name() << std::setw(20) << student.surname() << std::setw(20) << student.finalGrade() << '\n';
+    
+    std::ofstream file (filename);
+
+    // write header line
+    file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis balas" << std::endl;
+
+    // write stringstream to file
+    file << line.rdbuf();
+
+    file.close();
+}

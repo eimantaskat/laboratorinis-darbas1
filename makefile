@@ -6,4 +6,4 @@ clean:
 	rm *.exe *.txt
 
 test:
-	g++ -o test test.cpp student.cpp functions.cpp driver_functions.cpp
+	g++ -o test test.cpp student.cpp functions.cpp driver_functions.cpp vector_functions.cpp

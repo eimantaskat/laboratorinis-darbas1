@@ -22,3 +22,7 @@ class Student {
 };
 
 void read_data(vector<Student>&, string);
+bool compareByName(const Student&, const Student&);
+void write_students(const string, const vector<Student>);
+void split_two_new(vector<Student>);
+void split_one_new(vector<Student>);

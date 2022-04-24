@@ -65,11 +65,11 @@ void vector_student_sorting() {
             int s = stoi(select);
             switch (s) {
                 case 1:
-                    // split_two_new(stud, &average);
+                    split_two_new(stud);
                     break;
 
                 case 2:
-                    // split_one_new(stud, &average);
+                    split_one_new(stud);
                     break;
             }
             auto stop = hrClock::now();
