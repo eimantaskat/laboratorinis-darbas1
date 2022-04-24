@@ -1,8 +1,10 @@
 #include "student.hpp"
 
+
+
 int main() {
     vector<Student> v;
-    read_data(v, "100000st_10nd.txt");
+    read_data(v, "1000000st_10nd.txt");
 
     // for(auto stud:v)
     //     cout << stud.name() << " " << stud.surname() << " " << stud.finalGrade() << "\n";

@@ -1,27 +1,14 @@
 #include "student.hpp"
 
-Student::Student(std::istream& is) {
-    readStudent(is);  
+Student::Student(string name, string surname, vector<int> grades, int exam) {
+    name__ = name;
+    surname__ = surname;
+    grades_ = grades;
+    exam_ = exam; 
 }
 
 double Student::finalGrade(double (*func) (vector<int>)) const {
     return 0.4 * func(grades_) + 0.6 * exam_;
-}
-
-void Student::readStudent(std::istream& is) {
-    is >> name__ >> surname__;
-    string grade;
-    while (!is.eof()) {
-        is >> grade;
-        if(!is_grade(grade))
-            throw(1);
-        int g = std::stoi(grade);
-        grades_.push_back(g);
-    }
-    if (grades_.size() > 0) {
-        exam_ = *(grades_.end() - 1);
-        grades_.pop_back();
-    }
 }
 
 bool compareByName(const Student& a, const Student& b) {
@@ -33,40 +20,69 @@ bool compareByName(const Student& a, const Student& b) {
 
 void read_data(vector<Student>& arr, string filename) {
     try {
-        auto start_reading = hrClock::now();
-
-        std::stringstream buffer, ln;
-        std::fstream file(filename);
+        auto start = std::chrono::high_resolution_clock::now();
+        std::stringstream buffer;
+        // open file
+        std::ifstream file(filename);
         if (!file) {
             throw(1);
         }
         buffer << file.rdbuf();
+
         file.close();
+        auto stop = hrClock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Failo skaitymas uztruko: " << duration.count() * 1e-9 << "s\n";
 
-        auto stop_reading = hrClock::now();
-        auto reading_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop_reading - start_reading);
-        cout << "Failo skaitymas uztruko: " << reading_duration.count() * 1e-9 << "s\n";
-
-        auto start_processing = hrClock::now();
-        
+        start = hrClock::now();
+        int lines_count = 0;
         string line;
-        std::getline(buffer, line);
-        if(buffer.tellg() < 0)
-            throw(3);
-        while(std::getline(buffer, line)) {
-            ln << line;
-            try {
-                Student stud(ln);
-                arr.push_back(stud);
-            } catch (int err) {
-                throw(2);
-            }
-            ln.clear();
+        while (getline(buffer, line)) {
+            lines_count++;
         }
 
-        auto stop_processing = hrClock::now();
-        auto processing_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop_processing - start_processing);
-        cout << "Duomenu paruosimas programos naudojimui uztruko: " << processing_duration.count() * 1e-9 << "s\n";
+        if (lines_count == 0) {
+            throw(3);
+        }
+
+        buffer.clear();
+        buffer.seekg(0, std::ios::beg);
+
+        // read file header
+        vector<string> header;
+        header.reserve(4);
+        while (buffer.peek() != '\n') {
+            string data;
+            buffer >> data;
+            header.push_back(data);
+        }
+
+        // get homework count
+        int homework_count = header.size() - 3;
+        header.clear();
+
+        arr.reserve(lines_count - 1);
+        // read data
+
+        while (!buffer.eof()) {
+            int i = 0, exam;
+            string name, surname;
+            vector<int> grades;
+            buffer >> name >> surname;
+            for (int j = 0; j < homework_count; j++) {
+                grades.push_back(int());
+                buffer >> grades[j];
+            }
+            buffer >> exam;
+            arr.push_back(Student(name, surname, grades, exam));
+            if (i > lines_count) {
+                throw(2);
+            }
+            i++;
+        }
+        stop = hrClock::now();
+        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Duomenu paruosimas programos naudojimui uztruko: " << duration.count() * 1e-9 << "s\n";
     }
     catch (int err) {
         switch (err) {
