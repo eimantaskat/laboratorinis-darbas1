@@ -1,6 +1,6 @@
 #include "functions.hpp"
 
-bool check_select3(string s) {
+bool check_select3(const string s) {
     std::regex reg("[1-3]");
     if(std::regex_match(s, reg))
         return true;
@@ -8,7 +8,7 @@ bool check_select3(string s) {
         return false;
 }
 
-bool check_select2(string s) {
+bool check_select2(const string s) {
     std::regex reg("[1-2]");
     if(std::regex_match(s, reg))
         return true;
@@ -16,7 +16,7 @@ bool check_select2(string s) {
         return false;
 }
 
-bool is_int(string s) {
+bool is_int(const string s) {
     for (int i = 0; i < s.length(); i++)
         if (isdigit(s[i]) == false)
             return false;
@@ -24,9 +24,17 @@ bool is_int(string s) {
     return true;
 }
 
-bool is_grade(string s) {
+bool is_grade(const string s) {
     std::regex reg("[0-9]");
     if(std::regex_match(s, reg) || s == "10")
+        return true;
+    else
+        return false;
+}
+
+bool check_name(const string s) {
+    std::regex reg("^[A-Z][a-z]*$");
+    if(std::regex_match(s, reg))
         return true;
     else
         return false;
@@ -356,4 +364,30 @@ void write_students(const string filename, const deque<Student> arr) {
     file << line.rdbuf();
 
     file.close();
+}
+
+void input_grades(vector<int>& grades) {
+    cout << "Iveskite namu darbu rezultatus, norint baigti, iveskite 0: " << "\n";
+    string input;
+    int number = 10;
+    while(true) {
+        // input and verify grade
+        cout << grades.size() + 1 << " pazymys: ";
+        if(cin >> input) {
+            if(!is_grade(input)) {
+                cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << "\n";
+            } else {
+                number = stoi(input);
+                if(number < 0 || number > 10) {
+                    cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10" << "\n";
+                } else {
+                    // if input is 0 break the loop 
+                    // else add grade to an array
+                    if(number == 0)
+                        break;
+                    grades.push_back(number);
+                }
+            }
+        }
+    };
 }

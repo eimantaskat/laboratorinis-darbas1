@@ -163,3 +163,196 @@ void deque_student_sorting() {
         }
     }
 }
+
+void vector_data_input() {
+    vector<Student> arr;
+    string from_file, select;
+    cout << "Ar norite nuskaityti duomenis is failo? (y/n): ";
+    cin >> from_file;
+
+    if (from_file == "y") {
+        while (true) {
+            // read from file
+            cout << "Iveskite failo pavadinima su pletiniu: ";
+            string filename;
+            cin >> filename;
+
+            read_data(arr, filename);
+            if (arr.size() > 0) {
+                cout << "Pagal ka norite rusiuoti studentus?\n1. Varda\n2. Pavarde\n";
+
+                while (true) {
+                    cin >> select;
+                    if(!check_select2(select)) {
+                        cout << "Iveskite 1 arba 2\n";
+                    } else {
+                        int s = stoi(select);
+                        
+                        switch (s) {
+                            case 1:
+                                std::sort(arr.begin(), arr.end(), compareByName);
+                                break;
+                            
+                            case 2:
+                                std::sort(arr.begin(), arr.end(), compareBySurname);
+                                break;
+                        }
+                        
+                        print(arr, 3);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    } else {
+        // input manually
+        input_data(arr);
+
+        // ask user how to calculate final grade
+        cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
+        string select;
+
+        while (true) {
+            cin >> select;
+
+            if(!check_select2(select)) {
+                cout << "Iveskite 1 arba 2" << "\n";
+            } else {
+                int s = stoi(select);
+                // print data
+                print(arr, s);
+                break;
+            }
+        }
+    }
+}
+
+void list_data_input() {
+    list<Student> arr;
+    string from_file, select;
+    cout << "Ar norite nuskaityti duomenis is failo? (y/n): ";
+    cin >> from_file;
+
+    if (from_file == "y") {
+        while (true) {
+            // read from file
+            cout << "Iveskite failo pavadinima su pletiniu: ";
+            string filename;
+            cin >> filename;
+
+            read_data(arr, filename);
+            if (arr.size() > 0) {
+                cout << "Pagal ka norite rusiuoti studentus?\n1. Varda\n2. Pavarde\n";
+
+                while (true) {
+                    cin >> select;
+                    if(!check_select2(select)) {
+                        cout << "Iveskite 1 arba 2\n";
+                    } else {
+                        int s = stoi(select);
+                        
+                        switch (s) {
+                            case 1:
+                                arr.sort(compareByName);
+                                break;
+                            
+                            case 2:
+                                arr.sort(compareBySurname);
+                                break;
+                        }
+                        
+                        print(arr, 3);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    } else {
+        // input manually
+        input_data(arr);
+
+        // ask user how to calculate final grade
+        cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
+        string select;
+
+        while (true) {
+            cin >> select;
+
+            if(!check_select2(select)) {
+                cout << "Iveskite 1 arba 2" << "\n";
+            } else {
+                int s = stoi(select);
+                // print data
+                print(arr, s);
+                break;
+            }
+        }
+    }
+}
+
+void deque_data_input() {
+    deque<Student> arr;
+    string from_file, select;
+    cout << "Ar norite nuskaityti duomenis is failo? (y/n): ";
+    cin >> from_file;
+
+    if (from_file == "y") {
+        while (true) {
+            // read from file
+            cout << "Iveskite failo pavadinima su pletiniu: ";
+            string filename;
+            cin >> filename;
+
+            read_data(arr, filename);
+            if (arr.size() > 0) {
+                cout << "Pagal ka norite rusiuoti studentus?\n1. Varda\n2. Pavarde\n";
+
+                while (true) {
+                    cin >> select;
+                    if(!check_select2(select)) {
+                        cout << "Iveskite 1 arba 2\n";
+                    } else {
+                        int s = stoi(select);
+                        
+                        // quick_sort(arr, 0, arr.size()-1);
+                        switch (s) {
+                        case 1:
+                            std::sort(arr.begin(), arr.end(), compareByName);
+                            break;
+                        
+                        case 2:
+                            std::sort(arr.begin(), arr.end(), compareBySurname);
+                            break;
+                        }
+                        
+                        print(arr, 3);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    } else {
+        // input manually
+        input_data(arr);
+
+        // ask user how to calculate final grade
+        cout << "Pagal ka norite skaiciuoti galutini bala?\n1. Vidurki\n2. Mediana\n";
+        string select;
+
+        while (true) {
+            cin >> select;
+
+            if(!check_select2(select)) {
+                cout << "Iveskite 1 arba 2" << "\n";
+            } else {
+                int s = stoi(select);
+                // print data
+                print(arr, s);
+                break;
+            }
+        }
+    }
+}

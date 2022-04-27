@@ -40,12 +40,15 @@ int main() {
             switch (container) {
                 case 1:
                     // vector
+                    vector_data_input();
                     break;
                 case 2:
                     // list
+                    list_data_input();
                     break;
                 case 3:
                     // deque
+                    deque_data_input();
                     break;
             }
             break;

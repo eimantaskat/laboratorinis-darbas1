@@ -17,3 +17,10 @@ bool compareByName(const Student& a, const Student& b) {
     else
         return a.surname() < b.surname();
 }
+
+bool compareBySurname(const Student& a, const Student& b) {
+    if (a.surname() != b.surname())
+        return a.surname() < b.surname();
+    else
+        return a.name() < b.name();
+}

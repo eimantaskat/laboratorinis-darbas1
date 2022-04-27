@@ -21,6 +21,6 @@ class Student {
         inline void setName(std::string name) { name__ = name; }
         inline void setSurame(std::string surname) { surname__ = surname; }
         inline void setGrades(std::vector<int> grades) { grades_ = grades; }
-        inline void setName(int exam) { exam_ = exam; }
+        inline void setExam(int exam) { exam_ = exam; }
         double finalGrade(double (*func) (std::vector<int>) = average) const;
 };

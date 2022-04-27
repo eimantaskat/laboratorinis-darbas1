@@ -75,3 +75,152 @@ void split_one_new(vector<Student> kietiakai) {
     cout << "Vargsiuku ir kietiaku rasymas i failus uztruko: " << duration.count() * 1e-9 << "s\n";
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
+
+void print(const vector<Student> arr, const int s) {
+    // print header line
+    cout << "\n";
+    cout << std::left << std::setw(15) << "Vardas" 
+        << std::left << std::setw(15) << " Pavarde";
+    // print based on s value
+    switch(s) {
+        case 1:
+            cout << std::left << std::setw(15) << " Galutinis (vid.)\n";
+            cout << std::string(45, '-') << "\n";
+            break;
+        case 2:
+            cout << std::left <<std:: setw(15) << " Galutinis (med.)\n";
+            cout << std::string(45, '-') << "\n";
+            break;
+        case 3:
+            cout << std::left << std::setw(15) << " Galutinis (vid.)" << std::left << std::setw(15) << " Galutinis (med.)\n";
+            cout << std::string(60, '-') << "\n";
+            break;
+    }
+    // print all elements of an array
+    for(auto i:arr) {
+        cout << std::left << std::setw(15) << i.name() << " " 
+            << std::left << std::setw(15) << i.surname() << " ";
+            // calculate final grade using average or median based on s value
+            switch(s) {
+                case 1:
+                    cout << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade() << "\n";
+                    break;
+                case 2:
+                    cout << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade(median) << "\n";
+                    break;
+                case 3:
+                    cout << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade() 
+                        << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade(median) << "\n";
+                    break;
+            }
+    }
+}
+
+void input_data(vector<Student>& arr) {
+    int i = 0;
+    while (true) {
+        // add new element to an array
+        arr.push_back(Student());
+
+        // input and verify name
+        cout << "Vardas: ";
+        string name;
+        while(true) {
+            cin >> name;
+            if(!check_name(name)) {
+                cout << "Ar " << name << " tikrai yra mokinio vardas? (y/n): ";
+                char confirm;
+                cin >> confirm;
+                if(confirm == 'y') {
+                    arr[i].setName(name);
+                    break;
+                } else {
+                    cout << "Vardas: ";
+                }
+            } else {
+                arr[i].setName(name);
+                break;
+            }
+        }
+
+        // input and verify surname
+        cout << "Pavarde: ";
+        string surname;
+        while(true) {
+            cin >> surname;
+            if(!check_name(surname)) {
+                cout << "Ar " << surname << " tikrai yra mokinio pavarde? (y/n): ";
+                char confirm;
+                cin >> confirm;
+                if(confirm == 'y') {
+                    arr[i].setSurame(surname);
+                    break;
+                } else {
+                    cout << "Pavarde: ";
+                }
+            } else {
+                arr[i].setSurame(surname);
+                break;
+            }
+        }
+
+        char random;
+        cout << "Ar norite sugeneruoti atsitiktinius balus uz namu darbus ir egzamina? (y/n): ";
+        cin >> random;
+        if(random == 'y') {
+            // intitialise random number generator
+            srand(time(NULL));
+
+            // generate exam result
+            arr[i].setExam(1 + rand() % 10);
+            
+            // ask how many grades to generate
+            int n;
+            cout << "Kiek norite sugeneruoti namu darbu pazymiu? ";
+            while(!(cin >> n)) {
+                cout << "Iveskite sveikaji skaiciu \n";
+                cin.clear();
+                cin.ignore(256, '\n');
+            }
+            
+            vector<int> grades;
+            // generate array of random grades
+            for(int j = 0; j < n; j++) {
+                grades.push_back(1 + rand() % 10);
+            }
+            arr[i].setGrades(grades);
+
+        } else {
+            // input and verify exam result
+            string exam;
+            while(true) {
+                cout << "Egzamino rezultatas: ";
+                cin >> exam;
+                if(!is_grade(exam)) {
+                    cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10\n";
+                } else {
+                    int number = stoi(exam);
+                    if(number <= 0 || number > 10) {
+                        cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10\n";
+                    } else {
+                        arr[i].setExam(number);
+                        break;
+                    }
+                }
+            }
+
+            // input homework grades
+            vector<int> grades;
+            input_grades(grades);
+            arr[i].setGrades(grades);
+        }
+        i++;
+        // add more students or stop
+        char add_more;
+        cout << "Ar norite prideti dar vieno mokinio duomenis? (y/n): ";
+        cin >> add_more;
+        if(add_more != 'y') {
+            break;
+        }
+    }
+}
