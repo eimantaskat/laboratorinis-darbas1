@@ -74,46 +74,6 @@ void split_one_new(list<Student> kietiakai) {
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
 
-void print(const list<Student> arr, const int s) {
-    // print header line
-    cout << "\n";
-    cout << std::left << std::setw(15) << "Vardas" 
-        << std::left << std::setw(15) << " Pavarde";
-    // print based on s value
-    switch(s) {
-        case 1:
-            cout << std::left << std::setw(15) << " Galutinis (vid.)\n";
-            cout << std::string(45, '-') << "\n";
-            break;
-        case 2:
-            cout << std::left <<std:: setw(15) << " Galutinis (med.)\n";
-            cout << std::string(45, '-') << "\n";
-            break;
-        case 3:
-            cout << std::left << std::setw(15) << " Galutinis (vid.)" << std::left << std::setw(15) << " Galutinis (med.)\n";
-            cout << std::string(60, '-') << "\n";
-            break;
-    }
-    // print all elements of an array
-    for(auto i:arr) {
-        cout << std::left << std::setw(15) << i.name() << " " 
-            << std::left << std::setw(15) << i.surname() << " ";
-            // calculate final grade using average or median based on s value
-            switch(s) {
-                case 1:
-                    cout << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade() << "\n";
-                    break;
-                case 2:
-                    cout << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade(median) << "\n";
-                    break;
-                case 3:
-                    cout << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade() 
-                        << std::left << std::setw(20) << std::setprecision(3) << i.finalGrade(median) << "\n";
-                    break;
-            }
-    }
-}
-
 void input_data(list<Student>& arr) {
     int i = 0;
     Student tmp;

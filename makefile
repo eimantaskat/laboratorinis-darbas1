@@ -1,4 +1,6 @@
 main:
-	g++ -o main main.cpp functions/*.cpp list_functions/*.cpp deque_functions/*.cpp -O3
+	g++ -o main main.cpp container_functions/*.cpp functions/*.cpp student/*.cpp -O3
+clean_output:
+	rm *i.txt
 clean:
-	rm *.exe i*.txt
+	rm *.exe *.txt

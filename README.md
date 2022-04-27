@@ -22,3 +22,6 @@ $ pavadinimas.exe
 ```
 2. Sekite instrukcijas ekrane
 
+# ***v1.1***
+* Studentų duomenų struktūra (*stuct*) pakeista į klasę (*class*)
+* Pertvarkyta programos failų struktūra

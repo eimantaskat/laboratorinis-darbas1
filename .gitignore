@@ -34,3 +34,5 @@
 *.txt
 
 .vscode
+
+test.cpp
