@@ -1,9 +1,9 @@
-#include "functions.hpp"
+#include "../functions.hpp"
 
-void split_two_new(list<Student> arr) {
+void split_two_new(deque<Student> arr) {
     auto start = hrClock::now();
     // calculate final grade and split students
-    list<Student> vargsiukai, kietiakai;
+    deque<Student> vargsiukai, kietiakai;
     for(auto student:arr) {
         if (student.finalGrade() < 5)
             vargsiukai.push_back(student);
@@ -12,14 +12,14 @@ void split_two_new(list<Student> arr) {
     }
     arr.clear();
 
-    auto stop = hrClock::now();
+    auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     cout << "Studentu skirstymas i vargsiukus ir kietiakus uztruko: " << duration.count() * 1e-9 << "s\n";
 
-    auto start5 = hrClock::now();
+    auto start5 = std::chrono::high_resolution_clock::now();
 
-    kietiakai.sort(compareByName);
-    vargsiukai.sort(compareByName);
+    std::sort(kietiakai.begin(), kietiakai.end(), compareByName);
+    std::sort(vargsiukai.begin(), vargsiukai.end(), compareByName);
 
     auto stop5 = hrClock::now();
     auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
@@ -36,45 +36,47 @@ void split_two_new(list<Student> arr) {
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
 
-void split_one_new(list<Student> kietiakai) {
-    auto start = hrClock::now();
+void split_one_new(deque<Student> kietiakai) {
+    auto start = std::chrono::high_resolution_clock::now();
     
-    list<Student> vargsiukai;
+    std::stable_partition(kietiakai.begin(), kietiakai.end(), [](Student& stud){ return stud.finalGrade() < 5; });
+    auto it = std::find_if(kietiakai.begin(), kietiakai.end(), [](Student& stud){ return stud.finalGrade() > 5; });
+    deque<Student> vargsiukai(kietiakai.begin(), it);
     
-    auto it = kietiakai.begin();
+    it = kietiakai.begin();
     while(it != kietiakai.end()) {
         if ((*it).finalGrade() < 5) {
-            vargsiukai.push_back((*it));
-            it = kietiakai.erase(it);
+            std::iter_swap(it, kietiakai.end() - 1);
+            kietiakai.pop_back();
         } else
             it++;
     }
 
-    auto stop = hrClock::now();
+    auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     cout << "Studentu skirstymas i vargsiukus ir kietiakus uztruko: " << duration.count() * 1e-9 << "s\n";
 
-    auto start5 = hrClock::now();
+    auto start5 = std::chrono::high_resolution_clock::now();
 
-    kietiakai.sort(compareByName);
-    vargsiukai.sort(compareByName);
+    std::sort(kietiakai.begin(), kietiakai.end(), compareByName);
+    std::sort(vargsiukai.begin(), vargsiukai.end(), compareByName);
 
-    auto stop5 = hrClock::now();
+    auto stop5 = std::chrono::high_resolution_clock::now();
     auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
     cout << "Studentu rusiavimas pagal vardus uztruko: " << duration5.count() * 1e-9 << " \n";
     
-    start = hrClock::now();
+    start = std::chrono::high_resolution_clock::now();
     write_students("kietiakai.txt", kietiakai);
     kietiakai.clear();
     write_students("vargsiukai.txt", vargsiukai);
     vargsiukai.clear();
-    stop = hrClock::now();
+    stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     cout << "Vargsiuku ir kietiaku rasymas i failus uztruko: " << duration.count() * 1e-9 << "s\n";
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
 
-void print(const list<Student> arr, const int s) {
+void print(const deque<Student> arr, const int s) {
     // print header line
     cout << "\n";
     cout << std::left << std::setw(15) << "Vardas" 
@@ -114,10 +116,12 @@ void print(const list<Student> arr, const int s) {
     }
 }
 
-void input_data(list<Student>& arr) {
+void input_data(deque<Student>& arr) {
     int i = 0;
-    Student tmp;
     while (true) {
+        // add new element to an array
+        arr.push_back(Student());
+
         // input and verify name
         cout << "Vardas: ";
         string name;
@@ -128,13 +132,13 @@ void input_data(list<Student>& arr) {
                 char confirm;
                 cin >> confirm;
                 if(confirm == 'y') {
-                    tmp.setName(name);
+                    arr[i].setName(name);
                     break;
                 } else {
                     cout << "Vardas: ";
                 }
             } else {
-                tmp.setName(name);
+                arr[i].setName(name);
                 break;
             }
         }
@@ -149,13 +153,13 @@ void input_data(list<Student>& arr) {
                 char confirm;
                 cin >> confirm;
                 if(confirm == 'y') {
-                   tmp.setSurame(surname);
+                    arr[i].setSurame(surname);
                     break;
                 } else {
                     cout << "Pavarde: ";
                 }
             } else {
-                tmp.setSurame(surname);
+                arr[i].setSurame(surname);
                 break;
             }
         }
@@ -168,7 +172,7 @@ void input_data(list<Student>& arr) {
             srand(time(NULL));
 
             // generate exam result
-            tmp.setExam(1 + rand() % 10);
+            arr[i].setExam(1 + rand() % 10);
             
             // ask how many grades to generate
             int n;
@@ -184,7 +188,7 @@ void input_data(list<Student>& arr) {
             for(int j = 0; j < n; j++) {
                 grades.push_back(1 + rand() % 10);
             }
-            tmp.setGrades(grades);
+            arr[i].setGrades(grades);
 
         } else {
             // input and verify exam result
@@ -199,7 +203,7 @@ void input_data(list<Student>& arr) {
                     if(number <= 0 || number > 10) {
                         cout << "Pazymys turi buti sveikasis skaicius nuo 1 iki 10\n";
                     } else {
-                        tmp.setExam(number);
+                        arr[i].setExam(number);
                         break;
                     }
                 }
@@ -208,8 +212,7 @@ void input_data(list<Student>& arr) {
             // input homework grades
             vector<int> grades;
             input_grades(grades);
-            tmp.setGrades(grades);
-            arr.push_back(tmp);
+            arr[i].setGrades(grades);
         }
         i++;
         // add more students or stop

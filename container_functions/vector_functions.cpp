@@ -1,9 +1,9 @@
-#include "functions.hpp"
+#include "../functions.hpp"
 
-void split_two_new(deque<Student> arr) {
+void split_two_new(vector<Student> arr) {
     auto start = hrClock::now();
     // calculate final grade and split students
-    deque<Student> vargsiukai, kietiakai;
+    vector<Student> vargsiukai, kietiakai;
     for(auto student:arr) {
         if (student.finalGrade() < 5)
             vargsiukai.push_back(student);
@@ -36,12 +36,12 @@ void split_two_new(deque<Student> arr) {
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
 
-void split_one_new(deque<Student> kietiakai) {
+void split_one_new(vector<Student> kietiakai) {
     auto start = std::chrono::high_resolution_clock::now();
     
     std::stable_partition(kietiakai.begin(), kietiakai.end(), [](Student& stud){ return stud.finalGrade() < 5; });
     auto it = std::find_if(kietiakai.begin(), kietiakai.end(), [](Student& stud){ return stud.finalGrade() > 5; });
-    deque<Student> vargsiukai(kietiakai.begin(), it);
+    vector<Student> vargsiukai(kietiakai.begin(), it);
     
     it = kietiakai.begin();
     while(it != kietiakai.end()) {
@@ -76,7 +76,7 @@ void split_one_new(deque<Student> kietiakai) {
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
 
-void print(const deque<Student> arr, const int s) {
+void print(const vector<Student> arr, const int s) {
     // print header line
     cout << "\n";
     cout << std::left << std::setw(15) << "Vardas" 
@@ -116,7 +116,7 @@ void print(const deque<Student> arr, const int s) {
     }
 }
 
-void input_data(deque<Student>& arr) {
+void input_data(vector<Student>& arr) {
     int i = 0;
     while (true) {
         // add new element to an array

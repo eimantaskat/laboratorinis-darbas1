@@ -14,7 +14,7 @@
 #include <random>
 #include <iomanip>
 
-#include "student.hpp"
+#include "student/student.hpp"
 
 using std::string;
 using std::cout;

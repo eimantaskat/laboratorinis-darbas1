@@ -1,4 +1,4 @@
-#include "functions.hpp"
+#include "../functions.hpp"
 
 void generate_data() {
     int n, nd;
