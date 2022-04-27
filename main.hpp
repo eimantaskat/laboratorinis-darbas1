@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
+#include <deque>
 #include <string>
 #include <algorithm>
 #include <numeric>
@@ -12,9 +14,13 @@
 #include <random>
 #include <iomanip>
 
+#include "student.hpp"
+
 using std::string;
 using std::cout;
 using std::vector;
+using std::list;
+using std::deque;
 using std::ifstream;
 using std::cin;
 using hrClock = std::chrono::high_resolution_clock;

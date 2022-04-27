@@ -1,23 +1,4 @@
 #include "functions.hpp"
-#include "student.hpp"
-
-double median(vector<int> grades) {
-    std::sort(grades.begin(), grades.end());
-
-    if(grades.size() % 2 == 0) {
-        return (grades[grades.size()/2] + grades[(grades.size() / 2) - 1]) / 2.0;
-    } else  {
-        return grades[grades.size()/2];
-    }
-}
-
-double average(vector<int> arr) {
-    if(arr.size() > 0) {
-        return std::accumulate(arr.begin(), arr.end(), 0.0) / arr.size();
-    } else {
-        return 0;
-    }
-}
 
 bool check_select3(string s) {
     std::regex reg("[1-3]");
@@ -82,5 +63,297 @@ void generate(int n, int nd) {
     }
 
     file << line.rdbuf();
+    file.close();
+}
+
+void read_data(vector<Student>& arr, string filename) {
+    try {
+        auto start = std::chrono::high_resolution_clock::now();
+        std::stringstream buffer;
+        // open file
+        std::ifstream file(filename);
+        if (!file) {
+            throw(1);
+        }
+        buffer << file.rdbuf();
+
+        file.close();
+        auto stop = hrClock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Failo skaitymas uztruko: " << duration.count() * 1e-9 << "s\n";
+
+        start = hrClock::now();
+        int lines_count = 0;
+        string line;
+        while (getline(buffer, line)) {
+            lines_count++;
+        }
+
+        if (lines_count == 0) {
+            throw(3);
+        }
+
+        buffer.clear();
+        buffer.seekg(0, std::ios::beg);
+
+        // read file header
+        vector<string> header;
+        header.reserve(4);
+        while (buffer.peek() != '\n') {
+            string data;
+            buffer >> data;
+            header.push_back(data);
+        }
+
+        // get homework count
+        int homework_count = header.size() - 3;
+        header.clear();
+
+        arr.reserve(lines_count - 1);
+        // read data
+
+        while (!buffer.eof()) {
+            int i = 0, exam;
+            string name, surname;
+            vector<int> grades;
+            buffer >> name >> surname;
+            for (int j = 0; j < homework_count; j++) {
+                grades.push_back(int());
+                buffer >> grades[j];
+            }
+            buffer >> exam;
+            arr.push_back(Student(name, surname, grades, exam));
+            if (i > lines_count) {
+                throw(2);
+            }
+            i++;
+        }
+        stop = hrClock::now();
+        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Duomenu paruosimas programos naudojimui uztruko: " << duration.count() * 1e-9 << "s\n";
+    }
+    catch (int err) {
+        switch (err) {
+        case 1:
+            cout << "Failas neegzistuoja\n";
+            break;
+        case 2:
+            arr.clear();
+            cout << "Faile yra klaida\n";
+            break;
+        case 3:
+            cout << "Failas yra tuscias\n";
+            break;
+        }
+    }
+}
+
+void read_data(list<Student>& arr, string filename) {
+    try {
+        auto start = std::chrono::high_resolution_clock::now();
+        std::stringstream buffer;
+        // open file
+        std::ifstream file(filename);
+        if (!file) {
+            throw(1);
+        }
+        buffer << file.rdbuf();
+
+        file.close();
+        auto stop = hrClock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Failo skaitymas uztruko: " << duration.count() * 1e-9 << "s\n";
+
+        start = hrClock::now();
+        int lines_count = 0;
+        string line;
+        while (getline(buffer, line)) {
+            lines_count++;
+        }
+
+        if (lines_count == 0) {
+            throw(3);
+        }
+
+        buffer.clear();
+        buffer.seekg(0, std::ios::beg);
+
+        // read file header
+        list<string> header;
+        while (buffer.peek() != '\n') {
+            string data;
+            buffer >> data;
+            header.push_back(data);
+        }
+
+        // get homework count
+        int homework_count = header.size() - 3;
+        header.clear();
+
+        // read data
+        while (!buffer.eof()) {
+            int i = 0, exam;
+            string name, surname;
+            vector<int> grades;
+            buffer >> name >> surname;
+            for (int j = 0; j < homework_count; j++) {
+                grades.push_back(int());
+                buffer >> grades[j];
+            }
+            buffer >> exam;
+            arr.push_back(Student(name, surname, grades, exam));
+            if (i > lines_count) {
+                throw(2);
+            }
+            i++;
+        }
+        stop = hrClock::now();
+        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Duomenu paruosimas programos naudojimui uztruko: " << duration.count() * 1e-9 << "s\n";
+    }
+    catch (int err) {
+        switch (err) {
+        case 1:
+            cout << "Failas neegzistuoja\n";
+            break;
+        case 2:
+            arr.clear();
+            cout << "Faile yra klaida\n";
+            break;
+        case 3:
+            cout << "Failas yra tuscias\n";
+            break;
+        }
+    }
+}
+
+void read_data(deque<Student>& arr, string filename) {
+    try {
+        auto start = std::chrono::high_resolution_clock::now();
+        std::stringstream buffer;
+        // open file
+        std::ifstream file(filename);
+        if (!file) {
+            throw(1);
+        }
+        buffer << file.rdbuf();
+
+        file.close();
+        auto stop = hrClock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Failo skaitymas uztruko: " << duration.count() * 1e-9 << "s\n";
+
+        start = hrClock::now();
+        int lines_count = 0;
+        string line;
+        while (getline(buffer, line)) {
+            lines_count++;
+        }
+
+        if (lines_count == 0) {
+            throw(3);
+        }
+
+        buffer.clear();
+        buffer.seekg(0, std::ios::beg);
+
+        // read file header
+        deque<string> header;
+        while (buffer.peek() != '\n') {
+            string data;
+            buffer >> data;
+            header.push_back(data);
+        }
+
+        // get homework count
+        int homework_count = header.size() - 3;
+        header.clear();
+
+        // read data
+        while (!buffer.eof()) {
+            int i = 0, exam;
+            string name, surname;
+            vector<int> grades;
+            buffer >> name >> surname;
+            for (int j = 0; j < homework_count; j++) {
+                grades.push_back(int());
+                buffer >> grades[j];
+            }
+            buffer >> exam;
+            arr.push_back(Student(name, surname, grades, exam));
+            if (i > lines_count) {
+                throw(2);
+            }
+            i++;
+        }
+        stop = hrClock::now();
+        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+        cout << "Duomenu paruosimas programos naudojimui uztruko: " << duration.count() * 1e-9 << "s\n";
+    }
+    catch (int err) {
+        switch (err) {
+        case 1:
+            cout << "Failas neegzistuoja\n";
+            break;
+        case 2:
+            arr.clear();
+            cout << "Faile yra klaida\n";
+            break;
+        case 3:
+            cout << "Failas yra tuscias\n";
+            break;
+        }
+    }
+}
+
+
+void write_students(const string filename, const vector<Student> arr) {
+    // write student name, surname and final grade to stringstream
+    std::stringstream line;
+    for(auto student:arr)
+        line << std::left << std::setw(20) << student.name() << std::setw(20) << student.surname() << std::setw(20) << student.finalGrade() << '\n';
+    
+    std::ofstream file (filename);
+
+    // write header line
+    file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis balas" << std::endl;
+
+    // write stringstream to file
+    file << line.rdbuf();
+
+    file.close();
+}
+
+void write_students(const string filename, const list<Student> arr) {
+    // write student name, surname and final grade to stringstream
+    std::stringstream line;
+    for(auto student:arr)
+        line << std::left << std::setw(20) << student.name() << std::setw(20) << student.surname() << std::setw(20) << student.finalGrade() << '\n';
+    
+    std::ofstream file (filename);
+
+    // write header line
+    file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis balas" << std::endl;
+
+    // write stringstream to file
+    file << line.rdbuf();
+
+    file.close();
+}
+
+void write_students(const string filename, const deque<Student> arr) {
+    // write student name, surname and final grade to stringstream
+    std::stringstream line;
+    for(auto student:arr)
+        line << std::left << std::setw(20) << student.name() << std::setw(20) << student.surname() << std::setw(20) << student.finalGrade() << '\n';
+    
+    std::ofstream file (filename);
+
+    // write header line
+    file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis balas" << std::endl;
+
+    // write stringstream to file
+    file << line.rdbuf();
+
     file.close();
 }

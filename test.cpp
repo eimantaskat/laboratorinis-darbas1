@@ -1,4 +1,4 @@
-#include "student.hpp"
+#include "functions.hpp"
 
 
 
@@ -62,9 +62,11 @@ int main() {
                     break;
                 case 2:
                     // list
+                    list_student_sorting();
                     break;
                 case 3:
                     // deque
+                    deque_student_sorting();
                     break;
             }
             break;

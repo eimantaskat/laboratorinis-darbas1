@@ -1,9 +1,9 @@
 #include "functions.hpp"
 
-void split_two_new(vector<Student> arr) {
+void split_two_new(deque<Student> arr) {
     auto start = hrClock::now();
     // calculate final grade and split students
-    vector<Student> vargsiukai, kietiakai;
+    deque<Student> vargsiukai, kietiakai;
     for(auto student:arr) {
         if (student.finalGrade() < 5)
             vargsiukai.push_back(student);
@@ -36,12 +36,12 @@ void split_two_new(vector<Student> arr) {
     // cout << "Studentai surusiuoti i falus kietiakai.txt ir vargsiukai.txt\n";
 }
 
-void split_one_new(vector<Student> kietiakai) {
+void split_one_new(deque<Student> kietiakai) {
     auto start = std::chrono::high_resolution_clock::now();
     
     std::stable_partition(kietiakai.begin(), kietiakai.end(), [](Student& stud){ return stud.finalGrade() < 5; });
     auto it = std::find_if(kietiakai.begin(), kietiakai.end(), [](Student& stud){ return stud.finalGrade() > 5; });
-    vector<Student> vargsiukai(kietiakai.begin(), it);
+    deque<Student> vargsiukai(kietiakai.begin(), it);
     
     it = kietiakai.begin();
     while(it != kietiakai.end()) {
