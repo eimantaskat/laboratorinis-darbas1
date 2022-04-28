@@ -1,9 +1,9 @@
 # laboratorinis-darbas
 
 ## Įdiegimo instrukcija
-1. Atsisiųskite programos kodą paspaudę [čia]("https://github.com/eimantaskat/laboratorinis-darbas/archive/refs/heads/main.zip") arba su komanda
+1. Atsisiųskite programos kodą paspaudę [čia]("https://github.com/eimantaskat/laboratorinis-darbas1/archive/refs/heads/main.zip") arba su komanda
 ```console
-$ git clone https://github.com/eimantaskat/laboratorinis-darbas.git
+$ git clone https://github.com/eimantaskat/laboratorinis-darbas1.git
 ```
 2. Sukompiliuokite programą
 ```console
@@ -59,7 +59,6 @@ $ pavadinimas.exe
 *\* Testuojant buvo naudojami failai su 10 namų darbų pažymių*  
 *\* Testavimui buvo naudojamas **std::vector** tipo konterineris*  
 *\* Testuojant studentai buvo skirtomi panaudojant **vieną** naują konteinerį*  
-*\* Testuojant buvo naudojama **O3** optimizacija*
 
 ### ***class*** ir ***struct*** spartos palyginimas
 ![1,000,000](https://user-images.githubusercontent.com/80033246/165742100-c160d3d4-2e4e-454d-b128-7a1ee68f006c.png)
