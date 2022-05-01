@@ -70,7 +70,7 @@ $ pavadinimas.exe
 
 # ***v1.2***
 
-* realizuota *rule of three* - (sukurtas destruktorius, *copy* konstuktorius, *copy assignment* operatorius)  
+* realizuota *rule of three* - (sukurtas destruktorius, *copy* konstruktorius, *copy assignment* operatorius) 
 * realizuoti operatoriai:
     * ==
     * !=
