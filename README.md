@@ -67,3 +67,11 @@ $ pavadinimas.exe
 ### Skirtingų optimizacijos lygių palyginimas
 ![1,000,000](https://user-images.githubusercontent.com/80033246/165748086-8febe38b-e4fc-4f97-a236-06414263f604.png)
 ![10,000,000](https://user-images.githubusercontent.com/80033246/165748097-8a2f163c-4bf3-4ffc-b0e1-964c59160108.png)
+
+# ***v1.2***
+
+* realizuota *rule of three* - (sukurtas destruktorius, *copy* konstuktorius, *copy assignment* operatorius)  
+* realizuoti operatoriai:
+    * ==
+    * !=
+    * <<
