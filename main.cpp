@@ -4,7 +4,17 @@
 
 int main() {
     // vector<Student> v;
-    // read_data(v, "1000000st_10nd.txt");
+    // read_data(v, "1000st_10nd.txt");
+
+    // Student stud(v[0]);
+    // cout << stud.name() << " " << stud.surname() << " " << stud.finalGrade() << "\n";
+    // stud = v[1];
+    // cout << stud.name() << " " << stud.surname() << " " << stud.finalGrade() << "\n";
+    // cout << (stud == v[0]) << "\n";
+    // cout << (stud == v[1]) << "\n";
+    // cout << (stud != v[0]) << "\n";
+    // cout << (stud != v[1]) << "\n";
+    // cout << stud;    
 
     // for(auto stud:v)
     //     cout << stud.name() << " " << stud.surname() << " " << stud.finalGrade() << "\n";
