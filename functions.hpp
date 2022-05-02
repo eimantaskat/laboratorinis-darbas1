@@ -8,7 +8,6 @@ bool check_select2(const string);
 bool is_int(const string);
 bool is_grade(const string);
 bool check_name(const string);
-bool compareByName(const Student&, const Student&);
 bool compareBySurname(const Student&, const Student&);
 
 void input_grades(vector<int>&);

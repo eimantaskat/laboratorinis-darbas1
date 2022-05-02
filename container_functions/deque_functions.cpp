@@ -18,8 +18,8 @@ void split_two_new(deque<Student> arr) {
 
     auto start5 = std::chrono::high_resolution_clock::now();
 
-    std::sort(kietiakai.begin(), kietiakai.end(), compareByName);
-    std::sort(vargsiukai.begin(), vargsiukai.end(), compareByName);
+    std::sort(kietiakai.begin(), kietiakai.end());
+    std::sort(vargsiukai.begin(), vargsiukai.end());
 
     auto stop5 = hrClock::now();
     auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
@@ -58,8 +58,8 @@ void split_one_new(deque<Student> kietiakai) {
 
     auto start5 = std::chrono::high_resolution_clock::now();
 
-    std::sort(kietiakai.begin(), kietiakai.end(), compareByName);
-    std::sort(vargsiukai.begin(), vargsiukai.end(), compareByName);
+    std::sort(kietiakai.begin(), kietiakai.end());
+    std::sort(vargsiukai.begin(), vargsiukai.end());
 
     auto stop5 = std::chrono::high_resolution_clock::now();
     auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
