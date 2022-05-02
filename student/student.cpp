@@ -42,11 +42,32 @@ double Student::finalGrade(double (*func) (std::vector<int>)) const {
     return 0.4 * func(grades_) + 0.6 * exam_;
 }
 
-bool compareByName(const Student& a, const Student& b) {
-    if (a.name() != b.name())
-        return a.name() < b.name();
+bool operator<(const Student& a, const Student& b) {
+    if (a.name__ != b.name__)
+        return a.name__ < b.name__;
     else
-        return a.surname() < b.surname();
+        return a.surname__ < b.surname__;
+}
+
+bool operator>(const Student& a, const Student& b) {
+    if (a.name__ != b.name__)
+        return a.name__ > b.name__;
+    else
+        return a.surname__ > b.surname__;
+}
+
+bool operator<=(const Student& a, const Student& b) {
+    if (a.name__ != b.name__)
+        return a.name__ <= b.name__;
+    else
+        return a.surname__ <= b.surname__;
+}
+
+bool operator>=(const Student& a, const Student& b) {
+    if (a.name__ != b.name__)
+        return a.name__ >= b.name__;
+    else
+        return a.surname__ >= b.surname__;
 }
 
 bool compareBySurname(const Student& a, const Student& b) {

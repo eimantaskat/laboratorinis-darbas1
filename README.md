@@ -12,15 +12,27 @@ $ make
 3. Paleiskite programos **.exe* failą
 
 ## Naudojimosi instrukcija
-1. Palieskite programą paspaudę ant ***pavadinimas**.exe* failo arbą per komandinę eilutę
+1. Palieskite programą paspaudę ant ***main**.exe* failo arbą per komandinę eilutę
 ``` console
-$ ./pavadinimas
+$ ./main
 ```
 arba
 ```
-$ pavadinimas.exe
+$ main.exe
 ```
 2. Sekite instrukcijas ekrane
+
+# ***v1.2***
+
+* realizuota *rule of three* - (sukurtas destruktorius, *copy* konstuktorius, *copy assignment* operatorius)  
+* realizuoti operatoriai:
+    * ==
+    * !=
+    * <
+    * \>
+    * <=
+    * \>=
+    * <<
 
 # ***v1.1***
 * Studentų duomenų struktūra (*stuct*) pakeista į klasę (*class*)
@@ -59,6 +71,7 @@ $ pavadinimas.exe
 *\* Testuojant buvo naudojami failai su 10 namų darbų pažymių*  
 *\* Testavimui buvo naudojamas **std::vector** tipo konterineris*  
 *\* Testuojant studentai buvo skirtomi panaudojant **vieną** naują konteinerį*  
+*\* Testuojant buvo naudojama klasė (**class**)*
 
 ### ***class*** ir ***struct*** spartos palyginimas
 ![1,000,000](https://user-images.githubusercontent.com/80033246/165742100-c160d3d4-2e4e-454d-b128-7a1ee68f006c.png)
@@ -67,11 +80,3 @@ $ pavadinimas.exe
 ### Skirtingų optimizacijos lygių palyginimas
 ![1,000,000](https://user-images.githubusercontent.com/80033246/165748086-8febe38b-e4fc-4f97-a236-06414263f604.png)
 ![10,000,000](https://user-images.githubusercontent.com/80033246/165748097-8a2f163c-4bf3-4ffc-b0e1-964c59160108.png)
-
-# ***v1.2***
-
-* realizuota *rule of three* - (sukurtas destruktorius, *copy* konstruktorius, *copy assignment* operatorius) 
-* realizuoti operatoriai:
-    * ==
-    * !=
-    * <<

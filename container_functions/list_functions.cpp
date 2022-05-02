@@ -18,8 +18,8 @@ void split_two_new(list<Student> arr) {
 
     auto start5 = hrClock::now();
 
-    kietiakai.sort(compareByName);
-    vargsiukai.sort(compareByName);
+    kietiakai.sort();
+    vargsiukai.sort();
 
     auto stop5 = hrClock::now();
     auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);
@@ -56,8 +56,8 @@ void split_one_new(list<Student> kietiakai) {
 
     auto start5 = hrClock::now();
 
-    kietiakai.sort(compareByName);
-    vargsiukai.sort(compareByName);
+    kietiakai.sort();
+    vargsiukai.sort();
 
     auto stop5 = hrClock::now();
     auto duration5 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop5 - start5);

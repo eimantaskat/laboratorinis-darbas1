@@ -190,7 +190,7 @@ void vector_data_input() {
                         
                         switch (s) {
                             case 1:
-                                std::sort(arr.begin(), arr.end(), compareByName);
+                                std::sort(arr.begin(), arr.end());
                                 break;
                             
                             case 2:
@@ -254,7 +254,7 @@ void list_data_input() {
                         
                         switch (s) {
                             case 1:
-                                arr.sort(compareByName);
+                                arr.sort();
                                 break;
                             
                             case 2:
@@ -316,10 +316,9 @@ void deque_data_input() {
                     } else {
                         int s = stoi(select);
                         
-                        // quick_sort(arr, 0, arr.size()-1);
                         switch (s) {
                         case 1:
-                            std::sort(arr.begin(), arr.end(), compareByName);
+                            std::sort(arr.begin(), arr.end());
                             break;
                         
                         case 2:
