@@ -5,17 +5,16 @@
 #include <numeric>
 #include <iostream>
 
+#include "../person/person.hpp"
 #include "average.hpp"
 
-class Student {
+class Student : public Person {
     private:
-        std::string name__;
-        std::string surname__;
         int exam_;
         std::vector<int> grades_;
     public:
         Student() : exam_(0) {} // default constructor
-        Student(std::string name, std::string surname, std::vector<int> grades, int exam); // constructor
+        Student(std::string name, std::string surname, std::vector<int> grades, int exam) : Person(name, surname), grades_(grades), exam_(exam) {}
         ~Student() { grades_.clear(); } // destructor
         Student(const Student& stud); // copy constructor
 
@@ -33,8 +32,6 @@ class Student {
         inline int exam() const { return exam_; }
         inline std::vector<int> grades() const { return grades_; }
 
-        inline void setName(std::string name) { name__ = name; }
-        inline void setSurame(std::string surname) { surname__ = surname; }
         inline void setGrades(std::vector<int> grades) { grades_ = grades; }
         inline void setExam(int exam) { exam_ = exam; }
 

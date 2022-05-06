@@ -1,11 +1,10 @@
 #include "student.hpp"
 
-Student::Student(std::string name, std::string surname, std::vector<int> grades, int exam) {
-    name__ = name;
-    surname__ = surname;
-    grades_ = grades;
-    exam_ = exam; 
-}
+// Student::Student(std::string name, std::string surname, std::vector<int> grades, int exam) {
+//     Person{name, surname};
+//     grades_ = grades;
+//     exam_ = exam; 
+// }
 
 Student::Student(const Student &stud) {
     name__ = stud.name();
