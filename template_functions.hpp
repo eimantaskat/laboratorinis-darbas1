@@ -128,7 +128,7 @@ void write_students(const string filename, const container& arr) {
     // write student name, surname and final grade to stringstream
     std::stringstream line;
     for(auto student:arr)
-        line << std::left << std::setw(20) << student.name() << std::setw(20) << student.surname() << std::setw(20) << student.finalGrade() << '\n';
+        line << student << '\n';
     
     std::ofstream file (filename);
 

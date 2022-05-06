@@ -4,6 +4,7 @@
 #include <vector>
 #include <numeric>
 #include <iostream>
+#include <iomanip>
 
 #include "../person/person.hpp"
 #include "average.hpp"
@@ -19,13 +20,10 @@ class Student : public Person {
         Student(const Student& stud); // copy constructor
 
         Student& operator=(const Student& stud); // copy assignment operator
-        bool operator==(const Student& stud); // is equal to operator
-        bool operator!=(const Student& stud); // not equal to operator
-        friend bool operator<(const Student& a, const Student& b); // less than operator
-        friend bool operator>(const Student& a, const Student& b); // greater than operator
-        friend bool operator<=(const Student& a, const Student& b); // less than or equal to operator
-        friend bool operator>=(const Student& a, const Student& b); // greater than or equal to operator
         friend std::ostream& operator<<(std::ostream& out, const Student& stud); // insertion operator
+
+        bool operator==(const Student& stud);
+        bool operator!=(const Student& stud);
 
         inline std::string name() const { return name__; }
         inline std::string surname() const { return surname__; }

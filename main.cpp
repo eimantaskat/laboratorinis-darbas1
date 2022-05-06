@@ -1,7 +1,5 @@
 #include "functions.hpp"
 
-
-
 int main() {
     // vector<Student> v;
     // read_data(v, "1000st_10nd.txt");
@@ -14,7 +12,7 @@ int main() {
     // cout << (stud == v[1]) << "\n";
     // cout << (stud != v[0]) << "\n";
     // cout << (stud != v[1]) << "\n";
-    // cout << stud;    
+    // cout << stud;
 
     // for(auto stud:v)
     //     cout << stud.name() << " " << stud.surname() << " " << stud.finalGrade() << "\n";
