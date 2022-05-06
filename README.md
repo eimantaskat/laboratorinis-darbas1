@@ -22,6 +22,10 @@ $ main.exe
 ```
 2. Sekite instrukcijas ekrane
 
+# ***v1.5***
+* sukurta abstrakčioji bazinė žmogaus klasė (**person**)
+* studento klasė (**student**) padaryta žmogaus (**person**) išvestinė klasė
+
 # ***v1.2***
 
 * realizuota *rule of three* - (sukurtas destruktorius, *copy* konstuktorius, *copy assignment* operatorius)  
