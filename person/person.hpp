@@ -8,15 +8,15 @@ class Person {
         std::string name__;
         std::string surname__;
 
+    public:
         Person() : name__(""), surname__("") {}
         Person(std::string name, std::string surname);
-
-    public:
+        
         inline std::string name() const { return name__; }
         inline std::string surname() const { return surname__; }
 
-        inline void setName(std::string name) { name__ = name; }
-        inline void setSurame(std::string surname) { surname__ = surname; }
+        virtual void setName(std::string name) = 0;
+        virtual void setSurame(std::string surname) = 0;
 
         friend bool operator<(const Person& a, const Person& b); // less than operator
         friend bool operator>(const Person& a, const Person& b); // greater than operator

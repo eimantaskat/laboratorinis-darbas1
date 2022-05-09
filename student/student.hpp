@@ -30,6 +30,8 @@ class Student : public Person {
         inline int exam() const { return exam_; }
         inline std::vector<int> grades() const { return grades_; }
 
+        void setName(std::string name) { name__ = name; }
+        void setSurame(std::string surname) { surname__ = surname; }
         inline void setGrades(std::vector<int> grades) { grades_ = grades; }
         inline void setExam(int exam) { exam_ = exam; }
 
