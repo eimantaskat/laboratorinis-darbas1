@@ -1,7 +1,25 @@
 # laboratorinis-darbas
 
 ## Įdiegimo instrukcija
-1. Atsisiųskite programos kodą paspaudę [čia]("https://github.com/eimantaskat/laboratorinis-darbas1/archive/refs/heads/main.zip") arba su komanda
+
+### Programos instaliavimas
+1. Atsisiųskite programos [setup.exe](https://github.com/eimantaskat/laboratorinis-darbas1/releases/download/v2.0/setup.exe) arba [Setup.msi](https://github.com/eimantaskat/laboratorinis-darbas1/releases/download/v2.0/Setup.msi) failą
+2. Paleiskite atsisiųstą failą, spauskite *Next*  
+![image](https://user-images.githubusercontent.com/80033246/168071378-eff73e7c-3e5e-45c3-b490-88dcf00c01ac.png)
+3. Pasirinkite, kur norite instaliuoti programą, spauskite *Next*    
+![image](https://user-images.githubusercontent.com/80033246/168071584-77b010f7-b517-4cdc-b4c9-185166311d46.png)
+4. Spauskite *Next*  
+![image](https://user-images.githubusercontent.com/80033246/168071801-ca0b29ee-20f1-4d5a-a265-c1d91f38cbf0.png)
+5. Atsiradusiame lange spauskite *Yes*
+6. Programa instaliuota  
+![image](https://user-images.githubusercontent.com/80033246/168072013-e3861bd9-651e-43f3-a2f1-b9c5142b7dee.png)
+---
+### *Portable* versijos naudojimas
+1. Atsisiųskite [Laboratorinis-darbas.exe](https://github.com/eimantaskat/laboratorinis-darbas1/releases/download/v2.0/Laboratorinis-darbas.exe) failą
+2. Paleiskite atsisiųstą failą
+---
+### Programos sukompiliavimas
+1. Atsisiųskite programos kodą paspaudę [čia](https://github.com/eimantaskat/laboratorinis-darbas1/archive/refs/heads/v2.0.zip) arba su komanda
 ```console
 $ git clone https://github.com/eimantaskat/laboratorinis-darbas1.git
 ```
@@ -9,18 +27,21 @@ $ git clone https://github.com/eimantaskat/laboratorinis-darbas1.git
 ```console
 $ make
 ```
-3. Paleiskite programos **.exe* failą
-
+arba  
+```
+$ g++ -o <pavadinimas> main.cpp container_functions/*.cpp functions/*.cpp student/*.cpp person/*.cpp -O3
+```
+3. Paleiskite programos *<pavadinimas>.exe* failą
+---
 ## Naudojimosi instrukcija
-1. Palieskite programą paspaudę ant ***main**.exe* failo arbą per komandinę eilutę
-``` console
-$ ./main
-```
-arba
-```
-$ main.exe
-```
+1. Palieskite programos ***.exe** failą
 2. Sekite instrukcijas ekrane
+---
+
+# ***v2.0***
+* Sugeneruota projekto dokumentacija naudojant [*Doxygen*](https://www.doxygen.nl/manual/index.html)
+* Sukurti **Unit Testai** 5 funkcijoms naudojant *Google Test* framework'ą
+* Sukurtas įdiegimo failas
 
 # ***v1.5***
 * sukurta abstrakčioji bazinė žmogaus klasė (**person**)
