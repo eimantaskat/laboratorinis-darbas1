@@ -34,5 +34,12 @@
 *.txt
 
 .vscode
+.vs
 
-test.cpp
+*proj*
+*.sln
+x64
+packages
+
+Setup
+Doxyfile

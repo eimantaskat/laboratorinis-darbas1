@@ -1,6 +1,9 @@
 #include "average.hpp"
 
 double median(std::vector<int> grades) {
+    if (grades.size() == 0)
+        return 0;
+
     std::sort(grades.begin(), grades.end());
 
     if(grades.size() % 2 == 0) {

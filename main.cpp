@@ -82,4 +82,5 @@ int main() {
             }
             break;
     }
+    system("pause");
 }
