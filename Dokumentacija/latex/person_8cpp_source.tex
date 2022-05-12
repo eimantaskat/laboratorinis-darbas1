@@ -1,0 +1,49 @@
+\hypertarget{person_8cpp_source}{}\doxysection{person.\+cpp}
+\label{person_8cpp_source}\index{C:/Users/Eimantas/Desktop/laboratorinis-\/darbas1/person/person.cpp@{C:/Users/Eimantas/Desktop/laboratorinis-\/darbas1/person/person.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}person.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00003}00003 Person::Person(std::string name, std::string surname) \{}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00004}00004     name\_\_ = name;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00005}00005     surname\_\_ = surname;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00006}00006 \}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00008}00008 \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& b) \{}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00009}00009     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00010}00010         \textcolor{keywordflow}{return} a.name\_\_ < b.name\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00011}00011     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00012}00012         \textcolor{keywordflow}{return} a.surname\_\_ < b.surname\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00013}00013 \}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00015}00015 \textcolor{keywordtype}{bool} operator>(\textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& b) \{}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00016}00016     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00017}00017         \textcolor{keywordflow}{return} a.name\_\_ > b.name\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00018}00018     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00019}00019         \textcolor{keywordflow}{return} a.surname\_\_ > b.surname\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00020}00020 \}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00022}00022 \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& b) \{}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00023}00023     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00024}00024         \textcolor{keywordflow}{return} a.name\_\_ <= b.name\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00025}00025     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00026}00026         \textcolor{keywordflow}{return} a.surname\_\_ <= b.surname\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00027}00027 \}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00029}00029 \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& b) \{}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00030}00030     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00031}00031         \textcolor{keywordflow}{return} a.name\_\_ >= b.name\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00032}00032     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00033}00033         \textcolor{keywordflow}{return} a.surname\_\_ >= b.surname\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00034}00034 \}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00036}00036 std::ostream\& Person::write(std::ostream\& os)\textcolor{keyword}{ const }\{ }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00037}00037     os << name\_\_ << \textcolor{stringliteral}{"{} "{}} << surname\_\_;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00038}00038     \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00041}00041 std::ostream\& operator<<(std::ostream\& out, \textcolor{keyword}{const} \mbox{\hyperlink{class_person}{Person}}\& p) \{ }
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00042}00042     \textcolor{keywordflow}{return} p.write(out);}
+\DoxyCodeLine{\Hypertarget{person_8cpp_source_l00043}00043 \}}
+
+\end{DoxyCode}

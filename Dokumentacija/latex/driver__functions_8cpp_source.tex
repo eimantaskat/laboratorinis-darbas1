@@ -1,0 +1,363 @@
+\hypertarget{driver__functions_8cpp_source}{}\doxysection{driver\+\_\+functions.\+cpp}
+\label{driver__functions_8cpp_source}\index{C:/Users/Eimantas/Desktop/laboratorinis-\/darbas1/functions/driver\_functions.cpp@{C:/Users/Eimantas/Desktop/laboratorinis-\/darbas1/functions/driver\_functions.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}../functions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00003}00003 \textcolor{keywordtype}{void} generate\_data() \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00004}00004     \textcolor{keywordtype}{int} n, nd;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00005}00005     \textcolor{keywordtype}{string} input;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00007}00007     cout << \textcolor{stringliteral}{"{}Kiek studentu duomenu norite sugeneruoti?\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00008}00008     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00009}00009         cin >> input;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00010}00010         \textcolor{keywordflow}{if}(is\_int(input)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00011}00011             n = stoi(input);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00012}00012             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00013}00013         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00014}00014             cout << \textcolor{stringliteral}{"{}Iveskite sveikaji skaiciu\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00015}00015         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00016}00016     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00018}00018     cout << \textcolor{stringliteral}{"{}Kiek namu darbu pazymiu norite sugeneruoti?\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00019}00019     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00020}00020         cin >> input;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00021}00021         \textcolor{keywordflow}{if}(is\_int(input)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00022}00022             nd = stoi(input);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00023}00023             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00024}00024         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00025}00025             cout << \textcolor{stringliteral}{"{}Iveskite sveikaji skaiciu\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00026}00026         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00027}00027     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00029}00029     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00030}00030         \textcolor{keyword}{auto} start\_generation = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00031}00031         generate(n, nd);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00032}00032         \textcolor{keyword}{auto} stop\_generation = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00033}00033         \textcolor{keyword}{auto} generation\_duration = std::chrono::duration\_cast<std::chrono::nanoseconds>(stop\_generation -\/ start\_generation);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00034}00034         cout << \textcolor{stringliteral}{"{}Failo generavimas uztruko: "{}} << generation\_duration.count() * 1e-\/9 << \textcolor{stringliteral}{"{}s\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00035}00035         cout << \textcolor{stringliteral}{"{}Rezultatas issaugotas faile "{}} << std::to\_string(n) + \textcolor{stringliteral}{"{}st\_"{}} + std::to\_string(nd) + \textcolor{stringliteral}{"{}nd.txt\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00036}00036     \} \textcolor{keywordflow}{catch}(...) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00037}00037         cout << \textcolor{stringliteral}{"{}Ivyko klaida\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00041}00041 \textcolor{keywordtype}{void} vector\_student\_sorting() \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00042}00042     vector<Student> stud;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00044}00044     cout << \textcolor{stringliteral}{"{}Kaip norite rusioti studentus?\(\backslash\)n1. I du naujus konteinerius\(\backslash\)n2. I viena nauja konteineri\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00045}00045     \textcolor{keywordtype}{string} select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00046}00046     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00047}00047         cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00049}00049         \textcolor{keywordflow}{if} (check\_select2(select))}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00050}00050             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00051}00051         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00052}00052             cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00055}00055     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00056}00056         \textcolor{comment}{// read from file}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00057}00057         cout << \textcolor{stringliteral}{"{}Iveskite failo pavadinima su pletiniu: "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00058}00058         \textcolor{keywordtype}{string} filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00059}00059         cin >> filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00060}00060         \textcolor{keyword}{auto} start = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00062}00062         read\_data(stud, filename);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00064}00064         \textcolor{keywordflow}{if} (stud.size() > 0) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00065}00065             \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00066}00066             \textcolor{keywordflow}{switch} (s) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00067}00067                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00068}00068                     split\_two\_new(stud);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00069}00069                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00071}00071                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00072}00072                     split\_one\_new(stud);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00073}00073                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00074}00074             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00075}00075             \textcolor{keyword}{auto} stop = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00076}00076             \textcolor{keyword}{auto} duration = std::chrono::duration\_cast<std::chrono::nanoseconds>(stop -\/ start);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00077}00077             cout << \textcolor{stringliteral}{"{}Programos veikimo laikas: "{}} << duration.count() * 1e-\/9 << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00078}00078             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00079}00079         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00080}00080     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00081}00081 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00083}00083 \textcolor{keywordtype}{void} list\_student\_sorting() \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00084}00084     list<Student> stud;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00086}00086     cout << \textcolor{stringliteral}{"{}Kaip norite rusioti studentus?\(\backslash\)n1. I du naujus konteinerius\(\backslash\)n2. I viena nauja konteineri\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00087}00087     \textcolor{keywordtype}{string} select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00088}00088     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00089}00089         cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00091}00091         \textcolor{keywordflow}{if} (check\_select2(select))}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00092}00092             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00093}00093         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00094}00094             cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00095}00095     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00097}00097     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00098}00098         \textcolor{comment}{// read from file}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00099}00099         cout << \textcolor{stringliteral}{"{}Iveskite failo pavadinima su pletiniu: "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00100}00100         \textcolor{keywordtype}{string} filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00101}00101         cin >> filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00102}00102         \textcolor{keyword}{auto} start = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00104}00104         read\_data(stud, filename);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00106}00106         \textcolor{keywordflow}{if} (stud.size() > 0) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00107}00107             \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00108}00108             \textcolor{keywordflow}{switch} (s) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00109}00109                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00110}00110                     split\_two\_new(stud);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00111}00111                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00113}00113                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00114}00114                     split\_one\_new(stud);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00115}00115                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00116}00116             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00117}00117             \textcolor{keyword}{auto} stop = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00118}00118             \textcolor{keyword}{auto} duration = std::chrono::duration\_cast<std::chrono::nanoseconds>(stop -\/ start);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00119}00119             cout << \textcolor{stringliteral}{"{}Programos veikimo laikas: "{}} << duration.count() * 1e-\/9 << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00120}00120             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00121}00121         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00122}00122     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00123}00123 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00125}00125 \textcolor{keywordtype}{void} deque\_student\_sorting() \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00126}00126     deque<Student> stud;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00128}00128     cout << \textcolor{stringliteral}{"{}Kaip norite rusioti studentus?\(\backslash\)n1. I du naujus konteinerius\(\backslash\)n2. I viena nauja konteineri\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00129}00129     \textcolor{keywordtype}{string} select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00130}00130     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00131}00131         cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00133}00133         \textcolor{keywordflow}{if} (check\_select2(select))}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00134}00134             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00135}00135         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00136}00136             cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00137}00137     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00139}00139     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00140}00140         \textcolor{comment}{// read from file}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00141}00141         cout << \textcolor{stringliteral}{"{}Iveskite failo pavadinima su pletiniu: "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00142}00142         \textcolor{keywordtype}{string} filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00143}00143         cin >> filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00144}00144         \textcolor{keyword}{auto} start = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00146}00146         read\_data(stud, filename);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00148}00148         \textcolor{keywordflow}{if} (stud.size() > 0) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00149}00149             \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00150}00150             \textcolor{keywordflow}{switch} (s) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00151}00151                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00152}00152                     split\_two\_new(stud);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00153}00153                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00155}00155                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00156}00156                     split\_one\_new(stud);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00157}00157                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00158}00158             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00159}00159             \textcolor{keyword}{auto} stop = hrClock::now();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00160}00160             \textcolor{keyword}{auto} duration = std::chrono::duration\_cast<std::chrono::nanoseconds>(stop -\/ start);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00161}00161             cout << \textcolor{stringliteral}{"{}Programos veikimo laikas: "{}} << duration.count() * 1e-\/9 << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00162}00162             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00163}00163         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00164}00164     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00165}00165 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00167}00167 \textcolor{keywordtype}{void} vector\_data\_input() \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00168}00168     vector<Student> arr;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00169}00169     \textcolor{keywordtype}{string} from\_file, select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00170}00170     cout << \textcolor{stringliteral}{"{}Ar norite nuskaityti duomenis is failo? (y/n): "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00171}00171     cin >> from\_file;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00173}00173     \textcolor{keywordflow}{if} (from\_file == \textcolor{stringliteral}{"{}y"{}}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00174}00174         \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00175}00175             \textcolor{comment}{// read from file}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00176}00176             cout << \textcolor{stringliteral}{"{}Iveskite failo pavadinima su pletiniu: "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00177}00177             \textcolor{keywordtype}{string} filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00178}00178             cin >> filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00180}00180             read\_data(arr, filename);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00181}00181             \textcolor{keywordflow}{if} (arr.size() > 0) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00182}00182                 cout << \textcolor{stringliteral}{"{}Pagal ka norite rusiuoti studentus?\(\backslash\)n1. Varda\(\backslash\)n2. Pavarde\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00184}00184                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00185}00185                     cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00186}00186                     \textcolor{keywordflow}{if}(!check\_select2(select)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00187}00187                         cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00188}00188                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00189}00189                         \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00190}00190                         }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00191}00191                         \textcolor{keywordflow}{switch} (s) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00192}00192                             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00193}00193                                 std::sort(arr.begin(), arr.end());}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00194}00194                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00195}00195                             }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00196}00196                             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00197}00197                                 std::sort(arr.begin(), arr.end(), compareBySurname);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00198}00198                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00199}00199                         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00200}00200                         }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00201}00201                         print(arr, 3);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00202}00202                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00203}00203                     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00204}00204                 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00205}00205                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00206}00206             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00207}00207         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00208}00208     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00209}00209         \textcolor{comment}{// input manually}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00210}00210         input\_data(arr);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00212}00212         \textcolor{comment}{// ask user how to calculate final grade}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00213}00213         cout << \textcolor{stringliteral}{"{}Pagal ka norite skaiciuoti galutini bala?\(\backslash\)n1. Vidurki\(\backslash\)n2. Mediana\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00214}00214         \textcolor{keywordtype}{string} select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00216}00216         \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00217}00217             cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00219}00219             \textcolor{keywordflow}{if}(!check\_select2(select)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00220}00220                 cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2"{}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00221}00221             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00222}00222                 \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00223}00223                 \textcolor{comment}{// print data}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00224}00224                 print(arr, s);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00225}00225                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00226}00226             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00227}00227         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00228}00228     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00229}00229 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00231}00231 \textcolor{keywordtype}{void} list\_data\_input() \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00232}00232     list<Student> arr;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00233}00233     \textcolor{keywordtype}{string} from\_file, select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00234}00234     cout << \textcolor{stringliteral}{"{}Ar norite nuskaityti duomenis is failo? (y/n): "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00235}00235     cin >> from\_file;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00237}00237     \textcolor{keywordflow}{if} (from\_file == \textcolor{stringliteral}{"{}y"{}}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00238}00238         \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00239}00239             \textcolor{comment}{// read from file}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00240}00240             cout << \textcolor{stringliteral}{"{}Iveskite failo pavadinima su pletiniu: "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00241}00241             \textcolor{keywordtype}{string} filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00242}00242             cin >> filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00244}00244             read\_data(arr, filename);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00245}00245             \textcolor{keywordflow}{if} (arr.size() > 0) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00246}00246                 cout << \textcolor{stringliteral}{"{}Pagal ka norite rusiuoti studentus?\(\backslash\)n1. Varda\(\backslash\)n2. Pavarde\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00248}00248                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00249}00249                     cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00250}00250                     \textcolor{keywordflow}{if}(!check\_select2(select)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00251}00251                         cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00252}00252                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00253}00253                         \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00254}00254                         }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00255}00255                         \textcolor{keywordflow}{switch} (s) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00256}00256                             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00257}00257                                 arr.sort();}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00258}00258                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00259}00259                             }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00260}00260                             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00261}00261                                 arr.sort(compareBySurname);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00262}00262                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00263}00263                         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00264}00264                         }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00265}00265                         print(arr, 3);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00266}00266                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00267}00267                     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00268}00268                 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00269}00269                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00270}00270             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00271}00271         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00272}00272     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00273}00273         \textcolor{comment}{// input manually}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00274}00274         input\_data(arr);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00275}00275 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00276}00276         \textcolor{comment}{// ask user how to calculate final grade}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00277}00277         cout << \textcolor{stringliteral}{"{}Pagal ka norite skaiciuoti galutini bala?\(\backslash\)n1. Vidurki\(\backslash\)n2. Mediana\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00278}00278         \textcolor{keywordtype}{string} select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00279}00279 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00280}00280         \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00281}00281             cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00282}00282 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00283}00283             \textcolor{keywordflow}{if}(!check\_select2(select)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00284}00284                 cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2"{}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00285}00285             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00286}00286                 \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00287}00287                 \textcolor{comment}{// print data}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00288}00288                 print(arr, s);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00289}00289                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00290}00290             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00291}00291         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00292}00292     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00293}00293 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00295}00295 \textcolor{keywordtype}{void} deque\_data\_input() \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00296}00296     deque<Student> arr;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00297}00297     \textcolor{keywordtype}{string} from\_file, select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00298}00298     cout << \textcolor{stringliteral}{"{}Ar norite nuskaityti duomenis is failo? (y/n): "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00299}00299     cin >> from\_file;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00300}00300 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00301}00301     \textcolor{keywordflow}{if} (from\_file == \textcolor{stringliteral}{"{}y"{}}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00302}00302         \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00303}00303             \textcolor{comment}{// read from file}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00304}00304             cout << \textcolor{stringliteral}{"{}Iveskite failo pavadinima su pletiniu: "{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00305}00305             \textcolor{keywordtype}{string} filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00306}00306             cin >> filename;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00307}00307 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00308}00308             read\_data(arr, filename);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00309}00309             \textcolor{keywordflow}{if} (arr.size() > 0) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00310}00310                 cout << \textcolor{stringliteral}{"{}Pagal ka norite rusiuoti studentus?\(\backslash\)n1. Varda\(\backslash\)n2. Pavarde\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00312}00312                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00313}00313                     cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00314}00314                     \textcolor{keywordflow}{if}(!check\_select2(select)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00315}00315                         cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00316}00316                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00317}00317                         \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00318}00318                         }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00319}00319                         \textcolor{keywordflow}{switch} (s) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00320}00320                         \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00321}00321                             std::sort(arr.begin(), arr.end());}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00322}00322                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00323}00323                         }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00324}00324                         \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00325}00325                             std::sort(arr.begin(), arr.end(), compareBySurname);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00326}00326                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00327}00327                         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00328}00328                         }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00329}00329                         print(arr, 3);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00330}00330                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00331}00331                     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00332}00332                 \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00333}00333                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00334}00334             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00335}00335         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00336}00336     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00337}00337         \textcolor{comment}{// input manually}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00338}00338         input\_data(arr);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00339}00339 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00340}00340         \textcolor{comment}{// ask user how to calculate final grade}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00341}00341         cout << \textcolor{stringliteral}{"{}Pagal ka norite skaiciuoti galutini bala?\(\backslash\)n1. Vidurki\(\backslash\)n2. Mediana\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00342}00342         \textcolor{keywordtype}{string} select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00343}00343 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00344}00344         \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00345}00345             cin >> select;}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00347}00347             \textcolor{keywordflow}{if}(!check\_select2(select)) \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00348}00348                 cout << \textcolor{stringliteral}{"{}Iveskite 1 arba 2"{}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00349}00349             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00350}00350                 \textcolor{keywordtype}{int} s = stoi(select);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00351}00351                 \textcolor{comment}{// print data}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00352}00352                 print(arr, s);}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00353}00353                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00354}00354             \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00355}00355         \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00356}00356     \}}
+\DoxyCodeLine{\Hypertarget{driver__functions_8cpp_source_l00357}00357 \}}
+
+\end{DoxyCode}

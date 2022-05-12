@@ -1,0 +1,268 @@
+\hypertarget{class_person}{}\doxysection{Person Class Reference}
+\label{class_person}\index{Person@{Person}}
+Inheritance diagram for Person\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_person}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_person_a068aa4054d708d20263ddada7fc5ce24}{Person}} (std\+::string name, std\+::string surname)
+\item 
+std\+::string \mbox{\hyperlink{class_person_af2737af351f2a5dc4d5158128e291b8b}{name}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_person_a83f6ca5065d25870ed432fbbd8f10471}{surname}} () const
+\item 
+\mbox{\Hypertarget{class_person_ac9442538a5c9597bf27be8f785dbb550}\label{class_person_ac9442538a5c9597bf27be8f785dbb550}} 
+virtual void {\bfseries set\+Name} (std\+::string name)=0
+\item 
+\mbox{\Hypertarget{class_person_ae712a662c068f331cd4f0d418b72b10b}\label{class_person_ae712a662c068f331cd4f0d418b72b10b}} 
+virtual void {\bfseries set\+Surame} (std\+::string surname)=0
+\item 
+virtual std\+::ostream \& \mbox{\hyperlink{class_person_a210a1f4d8e44d204fa5022ca3e17cc32}{write}} (std\+::ostream \&) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_person_a01bc79894b619668d41a1884b201b235}{name\+\_\+\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{class_person_a656fe8700348431eee58fb30cacba79e}{surname\+\_\+\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_person_a19f123cc410307b52573d9ea3eb567b0}{operator$<$}} (const \mbox{\hyperlink{class_person}{Person}} \&a, const \mbox{\hyperlink{class_person}{Person}} \&b)
+\item 
+bool \mbox{\hyperlink{class_person_a52a705d0841effc562682cce1b27b95e}{operator$>$}} (const \mbox{\hyperlink{class_person}{Person}} \&a, const \mbox{\hyperlink{class_person}{Person}} \&b)
+\item 
+bool \mbox{\hyperlink{class_person_ab0e19b610785b87de7d2f43549d30b15}{operator$<$=}} (const \mbox{\hyperlink{class_person}{Person}} \&a, const \mbox{\hyperlink{class_person}{Person}} \&b)
+\item 
+bool \mbox{\hyperlink{class_person_a2531ceaa6238260846eab5d2951bec28}{operator$>$=}} (const \mbox{\hyperlink{class_person}{Person}} \&a, const \mbox{\hyperlink{class_person}{Person}} \&b)
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_person_ad364182dbcf8b4eed7c18f80767cf582}{operator$<$$<$}} (std\+::ostream \&, const \mbox{\hyperlink{class_person}{Person}} \&)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{person_8hpp_source_l00006}{6}} of file \mbox{\hyperlink{person_8hpp_source}{person.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_person_a0397c6f89fafc12e738923f612bc41a3}\label{class_person_a0397c6f89fafc12e738923f612bc41a3}} 
+\index{Person@{Person}!Person@{Person}}
+\index{Person@{Person}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{Person()}{Person()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Person\+::\+Person (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8hpp_source_l00012}{12}} of file \mbox{\hyperlink{person_8hpp_source}{person.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012 : name\_\_(\textcolor{stringliteral}{"{}"{}}), surname\_\_(\textcolor{stringliteral}{"{}"{}}) \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_person_a068aa4054d708d20263ddada7fc5ce24}\label{class_person_a068aa4054d708d20263ddada7fc5ce24}} 
+\index{Person@{Person}!Person@{Person}}
+\index{Person@{Person}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{Person()}{Person()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Person\+::\+Person (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{surname }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{person_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{person_8cpp_source}{person.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003                                                 \{}
+\DoxyCodeLine{00004     name\_\_ = name;}
+\DoxyCodeLine{00005     surname\_\_ = surname;}
+\DoxyCodeLine{00006 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_person_af2737af351f2a5dc4d5158128e291b8b}\label{class_person_af2737af351f2a5dc4d5158128e291b8b}} 
+\index{Person@{Person}!name@{name}}
+\index{name@{name}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily std\+::string Person\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8hpp_source_l00015}{15}} of file \mbox{\hyperlink{person_8hpp_source}{person.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015 \{ \textcolor{keywordflow}{return} name\_\_; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_person_a83f6ca5065d25870ed432fbbd8f10471}\label{class_person_a83f6ca5065d25870ed432fbbd8f10471}} 
+\index{Person@{Person}!surname@{surname}}
+\index{surname@{surname}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{surname()}{surname()}}
+{\footnotesize\ttfamily std\+::string Person\+::surname (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{person_8hpp_source}{person.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016 \{ \textcolor{keywordflow}{return} surname\_\_; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_person_a210a1f4d8e44d204fa5022ca3e17cc32}\label{class_person_a210a1f4d8e44d204fa5022ca3e17cc32}} 
+\index{Person@{Person}!write@{write}}
+\index{write@{write}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily std\+::ostream \& Person\+::write (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{person_8cpp_source}{person.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036                                               \{ }
+\DoxyCodeLine{00037     os << name\_\_ << \textcolor{stringliteral}{"{} "{}} << surname\_\_;}
+\DoxyCodeLine{00038     \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{00039 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_person_a19f123cc410307b52573d9ea3eb567b0}\label{class_person_a19f123cc410307b52573d9ea3eb567b0}} 
+\index{Person@{Person}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{operator$<$}{operator<}}
+{\footnotesize\ttfamily bool operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{a,  }\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{person_8cpp_source}{person.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008                                                  \{}
+\DoxyCodeLine{00009     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{00010         \textcolor{keywordflow}{return} a.name\_\_ < b.name\_\_;}
+\DoxyCodeLine{00011     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00012         \textcolor{keywordflow}{return} a.surname\_\_ < b.surname\_\_;}
+\DoxyCodeLine{00013 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_person_ad364182dbcf8b4eed7c18f80767cf582}\label{class_person_ad364182dbcf8b4eed7c18f80767cf582}} 
+\index{Person@{Person}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{person_8cpp_source}{person.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041                                                          \{ }
+\DoxyCodeLine{00042     \textcolor{keywordflow}{return} p.write(out);}
+\DoxyCodeLine{00043 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_person_ab0e19b610785b87de7d2f43549d30b15}\label{class_person_ab0e19b610785b87de7d2f43549d30b15}} 
+\index{Person@{Person}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{operator$<$=}{operator<=}}
+{\footnotesize\ttfamily bool operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{a,  }\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{person_8cpp_source}{person.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022                                                   \{}
+\DoxyCodeLine{00023     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{00024         \textcolor{keywordflow}{return} a.name\_\_ <= b.name\_\_;}
+\DoxyCodeLine{00025     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00026         \textcolor{keywordflow}{return} a.surname\_\_ <= b.surname\_\_;}
+\DoxyCodeLine{00027 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_person_a52a705d0841effc562682cce1b27b95e}\label{class_person_a52a705d0841effc562682cce1b27b95e}} 
+\index{Person@{Person}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{operator$>$}{operator>}}
+{\footnotesize\ttfamily bool operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{a,  }\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{person_8cpp_source}{person.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015                                                  \{}
+\DoxyCodeLine{00016     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{00017         \textcolor{keywordflow}{return} a.name\_\_ > b.name\_\_;}
+\DoxyCodeLine{00018     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00019         \textcolor{keywordflow}{return} a.surname\_\_ > b.surname\_\_;}
+\DoxyCodeLine{00020 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_person_a2531ceaa6238260846eab5d2951bec28}\label{class_person_a2531ceaa6238260846eab5d2951bec28}} 
+\index{Person@{Person}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{operator$>$=}{operator>=}}
+{\footnotesize\ttfamily bool operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{a,  }\item[{const \mbox{\hyperlink{class_person}{Person}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{person_8cpp_source}{person.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029                                                   \{}
+\DoxyCodeLine{00030     \textcolor{keywordflow}{if} (a.name\_\_ != b.name\_\_)}
+\DoxyCodeLine{00031         \textcolor{keywordflow}{return} a.name\_\_ >= b.name\_\_;}
+\DoxyCodeLine{00032     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00033         \textcolor{keywordflow}{return} a.surname\_\_ >= b.surname\_\_;}
+\DoxyCodeLine{00034 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_person_a01bc79894b619668d41a1884b201b235}\label{class_person_a01bc79894b619668d41a1884b201b235}} 
+\index{Person@{Person}!name\_\_@{name\_\_}}
+\index{name\_\_@{name\_\_}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{name\_\_}{name\_\_}}
+{\footnotesize\ttfamily std\+::string Person\+::name\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{person_8hpp_source}{person.\+hpp}}.
+
+\mbox{\Hypertarget{class_person_a656fe8700348431eee58fb30cacba79e}\label{class_person_a656fe8700348431eee58fb30cacba79e}} 
+\index{Person@{Person}!surname\_\_@{surname\_\_}}
+\index{surname\_\_@{surname\_\_}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{surname\_\_}{surname\_\_}}
+{\footnotesize\ttfamily std\+::string Person\+::surname\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{person_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{person_8hpp_source}{person.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Eimantas/\+Desktop/laboratorinis-\/darbas1/person/person.\+hpp\item 
+C\+:/\+Users/\+Eimantas/\+Desktop/laboratorinis-\/darbas1/person/person.\+cpp\end{DoxyCompactItemize}

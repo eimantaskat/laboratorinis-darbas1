@@ -1,0 +1,124 @@
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Įdiegimo instrukcija}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyEnumerate}
+\item Atsisiųskite programos kodą paspaudę \mbox{[}čia\mbox{]}(\char`\"{}https\+://github.\+com/eimantaskat/laboratorinis-\/darbas1/archive/refs/heads/main.\+zip\char`\"{}) arba su komanda 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ git clone https://github.com/eimantaskat/laboratorinis-\/darbas1.git}
+
+\end{DoxyCode}
+
+\item Sukompiliuokite programą 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ make}
+
+\end{DoxyCode}
+
+\item Paleiskite programos $\ast$$\ast$.exe$\ast$ failą
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Naudojimosi instrukcija}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyEnumerate}
+\item Palieskite programą paspaudę ant $\ast$$\ast$$\ast$main$\ast$$\ast$.exe$\ast$ failo arbą per komandinę eilutę 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ ./main}
+
+\end{DoxyCode}
+ arba 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ main.exe}
+
+\end{DoxyCode}
+
+\item Sekite instrukcijas ekrane
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{$<$em$>$$<$strong$>$v1.\+5$<$/strong$>$$<$/em$>$}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item sukurta abstrakčioji bazinė žmogaus klasė ({\bfseries{person}})
+\item studento klasė ({\bfseries{student}}) padaryta žmogaus ({\bfseries{person}}) išvestinė klasė
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{$<$em$>$$<$strong$>$v1.\+2$<$/strong$>$$<$/em$>$}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item realizuota {\itshape rule of three} -\/ (sukurtas destruktorius, {\itshape copy} konstuktorius, {\itshape copy assignment} operatorius) ~\newline
+
+\item realizuoti operatoriai\+:
+\begin{DoxyItemize}
+\item ==
+\item !=
+\item \texorpdfstring{$<$}{<}
+\item \texorpdfstring{$>$}{>}
+\item \texorpdfstring{$<$}{<}=
+\item \texorpdfstring{$>$}{>}=
+\item \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{$<$em$>$$<$strong$>$v1.\+1$<$/strong$>$$<$/em$>$}\label{md__r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Studentų duomenų struktūra ({\itshape stuct}) pakeista į klasę ({\itshape class})
+\item Pertvarkyta programos failų struktūra
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{Programos spartos analizė}\label{md__r_e_a_d_m_e_autotoc_md6}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{Naudojant O3 flag\textquotesingle{}ą}\label{md__r_e_a_d_m_e_autotoc_md7}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endhead
+1,000,000   &0.\+711048   &2.\+00103   &0.\+355985   &1.\+45004   &1.\+238   &5.\+886    \\\cline{1-7}
+10,000,000   &7.\+00603   &20.\+206   &3.\+508   &14.\+733   &11.\+091   &57.\+61   \\\cline{1-7}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsubsection{Naudojant O2 flag\textquotesingle{}ą}\label{md__r_e_a_d_m_e_autotoc_md8}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endhead
+1,000,000   &0.\+728998   &1.\+997   &0.\+348   &1.\+549   &1.\+19169   &5.\+9377    \\\cline{1-7}
+10,000,000   &7.\+09   &20.\+813   &3.\+54303   &16.\+837   &11.\+2531   &60.\+672   \\\cline{1-7}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{Naudojant O1 flag\textquotesingle{}ą}\label{md__r_e_a_d_m_e_autotoc_md9}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endhead
+1,000,000   &0.\+720049   &2.\+022   &0.\+347999   &1.\+51003   &1.\+22679   &5.\+94884    \\\cline{1-7}
+10,000,000   &7.\+08302   &20.\+342   &3.\+48103   &16.\+112   &11.\+5792   &59.\+7072   \\\cline{1-7}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{Be optimizacijos flag\textquotesingle{}o}\label{md__r_e_a_d_m_e_autotoc_md10}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašų kiekis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų nuskaitymas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų paruošimas naudojimui programoje, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas į dvi kategorijas, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rikiavimas pagal vardus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų išvedimas į du naujus failus, s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Programos veikimo laikas, s    }\\\cline{1-7}
+\endhead
+1,000,000   &0.\+725985   &3.\+15202   &1.\+20499   &4.\+949   &1.\+677   &11.\+909    \\\cline{1-7}
+10,000,000   &7.\+00703   &32.\+461   &12.\+123   &49.\+3172   &15.\+74   &118.\+563   \\\cline{1-7}
+\end{longtabu}
+
+
+$\ast$$\ast$ Programos testvaimas buvo atliktas naudojant g++ kompiliatorių (gcc version 8.\+1.\+0, x86\+\_\+64-\/posix-\/seh-\/rev0)$\ast$ ~\newline
+ $\ast$$\ast$ Naudota sistema\+: i5-\/8300h, 16gb 2667 MHz CL19, Micron 1100 M.\+2 SATA 6Gb/s$\ast$ ~\newline
+ $\ast$$\ast$ Programos veikimo laikas buvo pradėtas skaičiuoti sugeneravus duomenų failą$\ast$ ~\newline
+ $\ast$$\ast$ Testuojant buvo naudojami failai su 10 namų darbų pažymių$\ast$ ~\newline
+ $\ast$$\ast$ Testavimui buvo naudojamas {\bfseries{std\+::vector}} tipo konterineris$\ast$ ~\newline
+ $\ast$$\ast$ Testuojant studentai buvo skirtomi panaudojant {\bfseries{vieną}} naują konteinerį$\ast$ ~\newline
+ $\ast$$\ast$ Testuojant buvo naudojama klasė ({\bfseries{class}})$\ast$\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsubsection{$<$em$>$$<$strong$>$class$<$/strong$>$$<$/em$>$ ir $<$em$>$$<$strong$>$struct$<$/strong$>$$<$/em$>$ spartos palyginimas}\label{md__r_e_a_d_m_e_autotoc_md11}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{Skirtingų optimizacijos lygių palyginimas}\label{md__r_e_a_d_m_e_autotoc_md12}
+  
